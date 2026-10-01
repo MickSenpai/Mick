@@ -35,7 +35,7 @@
 </p>
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=7AF1FF&center=true&vCenter=true&width=900&lines=AI+%26+Agent+Builder;Privacy+advocate;Windows+%2F+macOS+productivity+hacker;Curator+of+awesome+tech+lists;Building+the+future" alt="Typing banner" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=7AF1FF&center=true&vCenter=true&width=900&lines=AI+%26+Agent+Builder;Privacy+advocate;Linux+%2F+macOS+productivity+hacker;Curator+of+awesome+tech+lists;Building+the+future" alt="Typing banner" />
 </div>
 
 <p align="center">
@@ -47,23 +47,24 @@
 
 ## 👋 About me
 
-I build tools, lists, and desktop apps around the things I care about most:
+<img src="https://media.tenor.com/FwNEO32K3sMAAAAi/anime-coding.gif" width="240" align="right" alt="Anime coding GIF" style="border-radius: 12px; margin-left: 20px; margin-bottom: 20px;" />
 
-- AI agents and local AI workflows
-- Privacy-respecting software and better digital habits
-- Fast, useful desktop experiences
-- Productivity tooling for real humans
-- Curating the best resources in AI, developer tooling, and software ecosystems
+I build tools, lists, and desktop apps around the things I care about most. When I'm not configuring Hyprland on Arch Linux or hanging out with my cat, I'm usually hacking together local AI workflows or curating developer resources.
 
-I like turning ideas into practical products that actually help people work faster, better, and with more control.
+I like turning ideas into practical products that actually help people work faster, better, and with more control over their own data. 
+
+- **AI agents & local workflows:** Pushing the limits of local LLMs and TTS systems.
+- **Privacy-respecting software:** Cleaner metadata and safer digital habits.
+- **Productivity tooling:** Fast, useful desktop experiences built in Rust and Tauri.
+- **Curated knowledge:** Awesome lists for AI, developer tooling, and software ecosystems.
 
 ## ⚡ Core themes
 
-- `AI & Agents` — developer tools, agent ecosystems, harness engineering
+- `AI & Agents` — developer tools, agent ecosystems, continuous local processing
 - `Privacy` — cleaner metadata, safer workflows, better digital hygiene
-- `Productivity` — local utility tools and workflow acceleration
+- `Productivity` — offline-first utilities, local tools, and workflow acceleration
 - `Curated knowledge` — awesome lists for AI, tools, software, and workflows
-- `Modern tooling` — building with modern languages and frameworks
+- `Modern tooling` — building with Rust, Tauri, TypeScript, and Python
 
 ## 🧩 Featured projects
 
@@ -71,12 +72,12 @@ I like turning ideas into practical products that actually help people work fast
 
 | Project | Description | Tech |
 |---------|-------------|------|
+| **[M.E.I.D.O.](#)** | Personal virtual assistant with continuous local speech recognition (`faster-whisper`), vector-based semantic memory (`pgvector` / `all-MiniLM-L6-v2`), and ElevenLabs TTS integration. | Python + PyQt6 + PostgreSQL |
+| **[Mitpad](#)** | Offline-first note-taking application designed for desktop, web, and mobile with seamless local/cloud synchronization. | Tauri + Rust + TypeScript + SQLite |
 | [dsh-studio](https://github.com/Moresyl/dsh-studio) | DeepSeek Harness native desktop app for Linux/macOS/Windows | Rust + Tauri |
 | [cchub](https://github.com/Moresyl/cchub) | Desktop hub for Claude Code MCP servers, profiles, workflows | Rust |
 | [metaclean](https://github.com/Moresyl/metaclean) | Privacy cleaner for metadata in images, Office, PDFs, text | TypeScript + Rust |
 | [snapimg](https://github.com/Moresyl/snapimg) | Privacy-first image optimizer with lossless compression | Rust + React |
-| [ImageMinify](https://github.com/Moresyl/ImageMinify) | Windows image compressor and batch converter | C# + WPF |
-| [BatchRenamePro](https://github.com/Moresyl/BatchRenamePro) | Safe, modern batch renamer for Windows | C# |
 
 ### Tools & utilities
 
@@ -85,7 +86,7 @@ I like turning ideas into practical products that actually help people work fast
 | [hands-off](https://github.com/Moresyl/hands-off) | Keep coding-agent diffs inside the scope you actually requested |
 | [optik-sol](https://github.com/Moresyl/optik-sol) | Mobile-first in-page developer console for debugging |
 | [postcss-adaptive-matrix](https://github.com/Moresyl/postcss-adaptive-matrix) | Responsive design compiler for multi-profile layouts |
-| [fontslim](https://github.com/Moresyl/fontslim) | Browser-side font subset generator for TTF/OTF/WOFF/WOFF2 |
+| [BatchRenamePro](https://github.com/Moresyl/BatchRenamePro) | Safe, modern batch renamer |
 
 ### Knowledge & curated resources
 
@@ -93,8 +94,7 @@ Comprehensive collections of AI, developer tools, privacy, and productivity reso
 
 - [awesome-ai-agents-2026](https://github.com/Moresyl/awesome-ai-agents-2026) — AI agents, frameworks, and tools for 2026 (300+ resources)
 - [awesome-ai-devtools](https://github.com/Moresyl/awesome-ai-devtools) — AI-powered developer tools
-- [awesome-generative-ai](https://github.com/Moresyl/awesome-generative-ai) — GenAI tools, services, and references
-- [awesome-local-ai](https://github.com/Moresyl/awesome-local-ai) — Local AI tools and resources
+- [awesome-local-ai](https://github.com/Moresyl/awesome-local-ai) — Local AI tools and resources (Ollama, local models, etc.)
 - [awesome-privacy](https://github.com/Moresyl/awesome-privacy) — Privacy-respecting software and services
 - [awesome-vibe-coding](https://github.com/Moresyl/awesome-vibe-coding) — Vibe coding references and AI collaboration
 
@@ -104,24 +104,22 @@ Comprehensive collections of AI, developer tools, privacy, and productivity reso
 
 <p align="left">
   <img src="https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white" alt="Rust" />
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
   <img src="https://img.shields.io/badge/Tauri-24C8DB?style=for-the-badge&logo=tauri&logoColor=white" alt="Tauri" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white" alt="C#" />
+  <img src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white" alt="Arch Linux" />
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
   <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows" />
-  <img src="https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS" />
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" />
 </p>
 
 ## 📌 Current focus
 
 I'm currently exploring and shipping around:
 
-- ✨ Local-first AI experiences and agent tooling
+- ✨ Local-first AI experiences, expanding vector memories (`pgvector`), and agent tooling
 - 🔒 Privacy-aware desktop software and metadata cleaning
-- 🚀 Cleaner developer workflow utilities
-- 📚 Curated AI/resource ecosystems that are actually useful
+- 🚀 Cleaner developer workflow utilities (mostly via terminal/kitty)
 - 🎯 Building tools that feel like a natural extension of your workflow
 
 ## 🌊 Signature vibe
