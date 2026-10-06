@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2150 -2150 4300 4300" role="img" aria-label="Logo de Autum">
+  <defs>
+    <linearGradient id="hoja" x1="0" y1="-1" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#c46a3a"/>
+      <stop offset="1" stop-color="#8a3a22"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#hoja)" d="m-90 2030 45-863a95 95 0 0 0-111-98l-859 151 116-320a65 65 0 0 0-20-73l-941-762 212-99a65 65 0 0 0 34-79l-186-572 542 115a65 65 0 0 0 73-38l105-247 423 454a65 65 0 0 0 111-57l-204-1052 327 189a65 65 0 0 0 91-27l332-652 332 652a65 65 0 0 0 91 27l327-189-204 1052a65 65 0 0 0 111 57l423-454 105 247a65 65 0 0 0 73 38l542-115-186 572a65 65 0 0 0 34 79l212 99-941 762a65 65 0 0 0-20 73l116 320-859-151a95 95 0 0 0-111 98l45 863z"/>
+  <path d="M-560 380 L0 -1050 L560 380 M-330 -170 H330" fill="none" stroke="#ffffff" stroke-width="250" stroke-linejoin="miter" stroke-linecap="butt"/>
+</svg>

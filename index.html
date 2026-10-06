@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omar Reyes — Portfolio</title>
+  <meta name="description" content="Omar Reyes (Mick): desarrollador de software multiplataforma enfocado en IA aplicada, arquitecturas Offline‑First y herramientas conectadas.">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta property="og:title" content="Omar Reyes — Portfolio">
+  <meta property="og:description" content="Desarrollador de software multiplataforma · IA aplicada. Tijuana, B.C.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='1' width='30' height='30' rx='6' fill='%232a2a2a'/%3E%3Crect x='9' y='9' width='14' height='14' rx='2' fill='%23f2f2f2'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a class="skip" href="#meido" data-goto="meido">Saltar a los proyectos</a>
+
+  <canvas id="bg" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <a class="brand" href="#inicio" data-goto="inicio">Omar Reyes</a>
+    <nav aria-label="Principal" class="top-nav">
+      <a href="#meido" data-goto="meido">Proyectos</a>
+      <a href="#trayectoria" data-goto="trayectoria">Trayectoria</a>
+      <a href="#contacto" data-goto="contacto">Contacto</a>
+      <a class="cv" href="%BASE_URL%cv/Omar_Reyes_CV.pdf" download>CV ↓</a>
+    </nav>
+  </header>
+
+  <nav aria-label="Capítulos" class="chapter-nav"><ol id="chapter-nav"></ol></nav>
+
+  <main id="content"></main>
+
+  <!-- Meido se dibuja en una capa propia por encima del contenido -->
+  <canvas id="fg" aria-hidden="true"></canvas>
+
+  <div id="bubble" class="bubble" role="status" aria-live="polite">
+    <span class="bubble-name" aria-hidden="true">Meido</span>
+    <p><span class="sr-only" id="bubble-full"></span><span aria-hidden="true" id="bubble-typed"></span><span class="caret" aria-hidden="true"></span></p>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
