@@ -108,7 +108,10 @@ function projectCh(p, n) {
       <p class="flow" aria-label="Flujo: ${esc(p.flow.join(', '))}">${p.flow.map(esc).join('<span aria-hidden="true">→</span>')}</p>
       ${detail}
       ${tags(p.stack)}
-      <footer class="project-foot"><span class="status">${esc(p.status)}</span>${repo}</footer>
+      <footer class="project-foot">
+        <span class="status">${esc(p.status)}</span>
+        <span class="foot-actions">${repo}<button class="demo-btn" type="button" data-demo="${p.id}" aria-haspopup="dialog">Probar demo</button></span>
+      </footer>
     </article>`, 'chapter-project');
 }
 

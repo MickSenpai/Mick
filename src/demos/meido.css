@@ -1,0 +1,49 @@
+/* Colores de la propia app (ui_tema.py / tema.dart): negro, bordes muy redondeados, píldoras */
+.mdemo { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 0; min-height: 100%; }
+.mdemo-stage {
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+  background: #000; border-right: 1px solid var(--line); padding: 32px 20px;
+}
+.mdemo-avatar { width: min(260px, 60vw); aspect-ratio: 1; }
+.mdemo-avatar svg { width: 100%; height: 100%; display: block; }
+.mdemo-isla {
+  display: inline-flex; align-items: center; gap: 12px; max-width: 100%;
+  background: #000; border: 1px solid #1f2a36; border-radius: 999px; padding: 10px 18px;
+  font: 400 13px 'Inter', sans-serif; color: #e6edf3; box-shadow: 0 0 0 1px #000, 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+.mdemo-isla-estado { font: 500 12px var(--mono); text-transform: lowercase; transition: color 0.3s; }
+.mdemo-isla-texto { color: #a3b0bd; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mdemo-permiso {
+  background: #121820; border: 1px solid #2a3644; border-radius: 22px; padding: 16px 18px; width: min(320px, 100%);
+  color: #e6edf3; font-size: 14px;
+}
+.mdemo-permiso code { display: block; margin: 8px 0 14px; font: 400 13px var(--mono); color: #fbbf24; }
+.mdemo-permiso div { display: flex; gap: 8px; }
+.mdemo-permiso button {
+  flex: 1; height: 38px; border-radius: 999px; cursor: pointer; font: 600 13px 'Inter', sans-serif;
+  border: 1px solid #2a3644; background: transparent; color: #e6edf3;
+}
+.mdemo-permiso button[data-r='si'] { background: #22d3ee; color: #00262e; border-color: #22d3ee; }
+
+.mdemo-side { padding: 26px; display: flex; flex-direction: column; }
+.mdemo-run {
+  align-self: flex-start; appearance: none; cursor: pointer; border: 0; background: var(--text); color: var(--bg);
+  height: 40px; padding: 0 18px; font: 500 14px var(--sans);
+}
+.mdemo-run:disabled { opacity: 0.4; cursor: default; }
+.mdemo-log { min-height: 1.6em; margin-top: 12px; font: 400 12.5px var(--mono); color: var(--text-2); }
+.mdemo-side .label { margin-top: 20px; }
+.mdemo-list { display: grid; gap: 2px; }
+.mdemo-list button {
+  width: 100%; display: flex; gap: 12px; align-items: flex-start; text-align: left; cursor: pointer;
+  appearance: none; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 10px 4px; color: var(--text-2);
+}
+.mdemo-list button:hover, .mdemo-list button[aria-pressed='true'] { color: var(--text); background: var(--surface); }
+.mdemo-list .dot { flex: none; width: 8px; height: 8px; border-radius: 50%; margin-top: 7px; }
+.mdemo-list b { display: block; font: 500 14px var(--sans); }
+.mdemo-list small { display: block; font-size: 13px; color: var(--text-3); line-height: 1.45; }
+@media (max-width: 760px) {
+  .mdemo { grid-template-columns: 1fr; }
+  .mdemo-stage { border-right: 0; border-bottom: 1px solid var(--line); }
+  .mdemo-avatar { width: 180px; }
+}
