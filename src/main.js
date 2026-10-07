@@ -6,6 +6,7 @@ import { createMeido } from './three/meido.js';
 import { createNarrator } from './ui/narrator.js';
 import { renderPage, chapters } from './ui/render.js';
 import { meidoLines } from './content.js';
+import { createDemoModal } from './ui/demo-modal.js';
 
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const flowQuery = window.matchMedia('(max-width: 900px), (max-height: 680px)');
@@ -25,6 +26,8 @@ const bubbleEl = document.getElementById('bubble');
 const LAST = chapters.length - 1;
 
 let active = -1;
+let paused = false; // el fondo 3D se pausa mientras hay un demo abierto
+createDemoModal({ onOpen: () => (paused = true), onClose: () => (paused = false) });
 let detached = false;
 const tmp = new THREE.Vector3();
 
@@ -147,7 +150,7 @@ window.setTimeout(() => {
 let last = performance.now();
 function frame(now) {
   requestAnimationFrame(frame);
-  if (document.hidden) {
+  if (document.hidden || paused) {
     last = now;
     return;
   }

@@ -1,0 +1,48 @@
+/* La app real usa la paleta Catppuccin Mocha (src/routes/+page.svelte) */
+.mpdemo { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); min-height: 100%; }
+.mp-app { background: #1e1e2e; color: #cdd6f4; padding: 28px; font-family: system-ui, sans-serif; }
+.mp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.mp-header h3 { color: #89b4fa; margin: 0; font: 700 26px system-ui, sans-serif; }
+.mp-header h3 span { font-size: 0.5em; color: #a6adc8; vertical-align: middle; }
+.mp-editor { display: flex; flex-direction: column; gap: 1rem; }
+.mp-app input, .mp-app textarea {
+  background: #313244; border: 1px solid #45475a; color: #cdd6f4; padding: 1rem; border-radius: 8px; font: 1rem system-ui, sans-serif;
+}
+.mp-app textarea { height: 170px; resize: vertical; }
+.mp-app input:focus, .mp-app textarea:focus { outline: 2px solid #89b4fa; }
+.mp-actions { display: flex; gap: 1rem; }
+.mp-app button { padding: 1rem; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; transition: 0.2s; flex: 1; font-family: system-ui, sans-serif; }
+.mp-save { background: #89b4fa; color: #1e1e2e; }
+.mp-save:hover { background: #b4befe; }
+.mp-delete { background: #f38ba8; color: #1e1e2e; flex: 0.3 !important; }
+.mp-app .mp-new { flex: none; background: transparent; color: #a6e3a1; border: 1px solid #a6e3a1; padding: 0.5rem 1rem; }
+.mp-new:hover { background: rgba(166, 227, 161, 0.1); }
+.mp-error { color: #f38ba8; padding: 1rem; border: 1px solid #f38ba8; border-radius: 8px; }
+.mp-success { margin-top: 1.5rem; padding: 1rem; background: #313244; border-left: 4px solid #a6e3a1; border-radius: 4px; font-size: 14px; word-break: break-all; }
+.mp-success code { background: rgba(0, 0, 0, 0.3); padding: 0.2rem 0.4rem; border-radius: 4px; }
+
+.mp-back { padding: 24px 26px; border-left: 1px solid var(--line); min-width: 0; }
+.mp-back .label { margin: 18px 0 8px; }
+.mp-net { display: flex; align-items: center; justify-content: space-between; }
+.mp-net .label { margin: 0; }
+.mp-toggle { appearance: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; background: none; border: 1px solid var(--line-2); color: var(--text); height: 32px; padding: 0 12px; font: 400 12px var(--mono); }
+.mp-toggle span { width: 8px; height: 8px; border-radius: 50%; background: var(--text); }
+.mp-toggle[aria-checked='false'] { color: var(--text-3); }
+.mp-toggle[aria-checked='false'] span { background: transparent; border: 1px solid var(--text-3); }
+.mp-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.mp-cols ul { border-top: 1px solid var(--line); }
+.mp-cols li { padding: 7px 0; border-bottom: 1px solid var(--line); font-size: 13px; display: flex; justify-content: space-between; gap: 8px; }
+.mp-cols li[data-id] { cursor: pointer; }
+.mp-cols li[data-id]:hover, .mp-cols li.on { color: var(--text); background: var(--surface); }
+.mp-cols li b { font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mp-cols li small, .mp-queue td { font: 400 11px var(--mono); color: var(--text-3); }
+.empty { color: var(--text-3); font: 400 11px var(--mono) !important; }
+.mp-queue { width: 100%; border-collapse: collapse; font: 400 12px var(--mono); }
+.mp-queue th { text-align: left; color: var(--text-3); font-weight: 400; border-bottom: 1px solid var(--line-2); padding: 5px 0; }
+.mp-queue td { padding: 5px 0; border-bottom: 1px solid var(--line); color: var(--text-2); }
+.mp-log { height: 150px; overflow: auto; background: #050505; border: 1px solid var(--line); padding: 10px 12px; font: 400 11.5px/1.6 var(--mono); color: var(--text-2); white-space: pre-wrap; }
+@media (max-width: 760px) {
+  .mpdemo { grid-template-columns: 1fr; }
+  .mp-back { border-left: 0; border-top: 1px solid var(--line); }
+  .mp-app { padding: 18px; }
+}

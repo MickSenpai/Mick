@@ -63,6 +63,7 @@ export const projects = [
     stack: ['Python', 'PyQt6', 'aiohttp', 'FastAPI', 'Convex', 'Whisper'],
     status: 'En desarrollo activo',
     repo: null,
+    demo: 'El personaje y sus estados se generaron con el código real de M.E.I.D.O (isla_personaje.py). La voz y el LLM no corren en el navegador: aquí se simula la secuencia.',
     formation: 'explode',
   },
   {
@@ -81,6 +82,7 @@ export const projects = [
     stack: ['Flutter', 'Dart', 'Convex', 'Android'],
     status: 'En desarrollo activo',
     repo: null,
+    demo: 'Modo sin conexión de la app: las órdenes se interpretan con las mismas reglas de offline.dart, portadas a JavaScript. Escribe como le hablarías.',
     formation: 'phone',
   },
   {
@@ -99,6 +101,7 @@ export const projects = [
     stack: ['Rust', 'Tauri', 'SvelteKit', 'TypeScript', 'SQLite', 'Convex'],
     status: 'En desarrollo activo',
     repo: null,
+    demo: 'Interfaz y mensajes de la app real. La base local y la nube se simulan en memoria; el Worker revisa la cola cada 2 s (en la app, cada 5 s).',
     formation: 'sheet',
   },
   {
@@ -118,6 +121,7 @@ export const projects = [
     stack: ['Node.js', 'Playwright', 'Telegram Bot API', 'Tauri', 'Rust', 'PostgreSQL'],
     status: 'Pre‑fase en uso',
     repo: 'https://github.com/MickSenpai/autum',
+    demo: 'Mensajes, botón y comandos idénticos a los del bot real. Tiempos acelerados: revisión cada 3 s (real: 60 s) y recordatorio cada 10 s (real: 2 min).',
     formation: 'leaves',
   },
   {
@@ -138,6 +142,7 @@ export const projects = [
     stack: ['PHP', 'Laravel', 'Vue', 'Inertia', 'Tailwind', 'SQLite'],
     status: 'En desarrollo activo',
     repo: null,
+    demo: 'Datos reales del catálogo de CosechIA. En la app las respuestas las redacta un LLM con búsqueda en fichas y manuales; aquí se arman con esas mismas fichas.',
     formation: 'rows',
   },
 ];

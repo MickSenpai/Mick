@@ -1,0 +1,380 @@
+{
+ "variedades": [
+  {
+   "nombre": "Chardonnay",
+   "tipo": "blanca",
+   "ciclo": "medio",
+   "brix_optimo_cosecha_min": 22.0,
+   "brix_optimo_cosecha_max": 24.0,
+   "ph_optimo_min": 3.2,
+   "ph_optimo_max": 3.5,
+   "at_optimo_min_g_l": 6.0,
+   "at_optimo_max_g_l": 7.5,
+   "plagas": [
+    "Oídio",
+    "Yesca"
+   ]
+  },
+  {
+   "nombre": "Chenin Blanc",
+   "tipo": "blanca",
+   "ciclo": "largo",
+   "brix_optimo_cosecha_min": 21.0,
+   "brix_optimo_cosecha_max": 23.0,
+   "ph_optimo_min": 3.2,
+   "ph_optimo_max": 3.5,
+   "at_optimo_min_g_l": 6.5,
+   "at_optimo_max_g_l": 8.0,
+   "plagas": [
+    "Oídio",
+    "Yesca"
+   ]
+  },
+  {
+   "nombre": "Colombard",
+   "tipo": "blanca",
+   "ciclo": "medio",
+   "brix_optimo_cosecha_min": 20.0,
+   "brix_optimo_cosecha_max": 22.0,
+   "ph_optimo_min": 3.1,
+   "ph_optimo_max": 3.4,
+   "at_optimo_min_g_l": 6.8,
+   "at_optimo_max_g_l": 8.2,
+   "plagas": [
+    "Yesca"
+   ]
+  },
+  {
+   "nombre": "Misión",
+   "tipo": "blanca",
+   "ciclo": "largo",
+   "brix_optimo_cosecha_min": 20.0,
+   "brix_optimo_cosecha_max": 22.0,
+   "ph_optimo_min": 3.2,
+   "ph_optimo_max": 3.5,
+   "at_optimo_min_g_l": 6.0,
+   "at_optimo_max_g_l": 7.5,
+   "plagas": []
+  },
+  {
+   "nombre": "Sauvignon Blanc",
+   "tipo": "blanca",
+   "ciclo": "medio",
+   "brix_optimo_cosecha_min": 21.0,
+   "brix_optimo_cosecha_max": 23.0,
+   "ph_optimo_min": 3.1,
+   "ph_optimo_max": 3.4,
+   "at_optimo_min_g_l": 6.5,
+   "at_optimo_max_g_l": 8.0,
+   "plagas": [
+    "Oídio",
+    "Yesca"
+   ]
+  },
+  {
+   "nombre": "Cabernet Sauvignon",
+   "tipo": "tinta",
+   "ciclo": "largo",
+   "brix_optimo_cosecha_min": 24.0,
+   "brix_optimo_cosecha_max": 26.0,
+   "ph_optimo_min": 3.3,
+   "ph_optimo_max": 3.7,
+   "at_optimo_min_g_l": 5.5,
+   "at_optimo_max_g_l": 7.0,
+   "plagas": [
+    "Mildiu",
+    "Botrytis",
+    "Yesca"
+   ]
+  },
+  {
+   "nombre": "Listán Prieto",
+   "tipo": "tinta",
+   "ciclo": "largo",
+   "brix_optimo_cosecha_min": 22.0,
+   "brix_optimo_cosecha_max": 24.0,
+   "ph_optimo_min": 3.3,
+   "ph_optimo_max": 3.6,
+   "at_optimo_min_g_l": 6.0,
+   "at_optimo_max_g_l": 7.5,
+   "plagas": []
+  },
+  {
+   "nombre": "Malbec",
+   "tipo": "tinta",
+   "ciclo": "medio",
+   "brix_optimo_cosecha_min": 24.0,
+   "brix_optimo_cosecha_max": 26.0,
+   "ph_optimo_min": 3.4,
+   "ph_optimo_max": 3.7,
+   "at_optimo_min_g_l": 5.5,
+   "at_optimo_max_g_l": 7.0,
+   "plagas": [
+    "Botrytis",
+    "Yesca"
+   ]
+  },
+  {
+   "nombre": "Merlot",
+   "tipo": "tinta",
+   "ciclo": "medio",
+   "brix_optimo_cosecha_min": 23.0,
+   "brix_optimo_cosecha_max": 25.0,
+   "ph_optimo_min": 3.3,
+   "ph_optimo_max": 3.6,
+   "at_optimo_min_g_l": 5.8,
+   "at_optimo_max_g_l": 7.2,
+   "plagas": [
+    "Mildiu",
+    "Botrytis"
+   ]
+  },
+  {
+   "nombre": "Nebbiolo",
+   "tipo": "tinta",
+   "ciclo": "largo",
+   "brix_optimo_cosecha_min": 23.0,
+   "brix_optimo_cosecha_max": 25.0,
+   "ph_optimo_min": 3.2,
+   "ph_optimo_max": 3.5,
+   "at_optimo_min_g_l": 6.5,
+   "at_optimo_max_g_l": 8.0,
+   "plagas": [
+    "Botrytis"
+   ]
+  },
+  {
+   "nombre": "Petit Syrah",
+   "tipo": "tinta",
+   "ciclo": "largo",
+   "brix_optimo_cosecha_min": 24.0,
+   "brix_optimo_cosecha_max": 27.0,
+   "ph_optimo_min": 3.4,
+   "ph_optimo_max": 3.8,
+   "at_optimo_min_g_l": 5.5,
+   "at_optimo_max_g_l": 7.0,
+   "plagas": [
+    "Mildiu",
+    "Botrytis"
+   ]
+  },
+  {
+   "nombre": "Pinot Noir",
+   "tipo": "tinta",
+   "ciclo": "corto",
+   "brix_optimo_cosecha_min": 22.0,
+   "brix_optimo_cosecha_max": 24.0,
+   "ph_optimo_min": 3.3,
+   "ph_optimo_max": 3.6,
+   "at_optimo_min_g_l": 5.8,
+   "at_optimo_max_g_l": 7.2,
+   "plagas": [
+    "Botrytis",
+    "Mosca del vinagre"
+   ]
+  },
+  {
+   "nombre": "Syrah",
+   "tipo": "tinta",
+   "ciclo": "medio",
+   "brix_optimo_cosecha_min": 24.0,
+   "brix_optimo_cosecha_max": 26.0,
+   "ph_optimo_min": 3.4,
+   "ph_optimo_max": 3.7,
+   "at_optimo_min_g_l": 5.5,
+   "at_optimo_max_g_l": 7.0,
+   "plagas": [
+    "Mildiu",
+    "Botrytis",
+    "Yesca"
+   ]
+  },
+  {
+   "nombre": "Tempranillo",
+   "tipo": "tinta",
+   "ciclo": "medio",
+   "brix_optimo_cosecha_min": 23.0,
+   "brix_optimo_cosecha_max": 25.0,
+   "ph_optimo_min": 3.3,
+   "ph_optimo_max": 3.6,
+   "at_optimo_min_g_l": 6.0,
+   "at_optimo_max_g_l": 7.5,
+   "plagas": [
+    "Mildiu",
+    "Botrytis"
+   ]
+  },
+  {
+   "nombre": "Zinfandel",
+   "tipo": "tinta",
+   "ciclo": "medio",
+   "brix_optimo_cosecha_min": 24.0,
+   "brix_optimo_cosecha_max": 27.0,
+   "ph_optimo_min": 3.4,
+   "ph_optimo_max": 3.8,
+   "at_optimo_min_g_l": 5.2,
+   "at_optimo_max_g_l": 6.8,
+   "plagas": [
+    "Botrytis",
+    "Mosca del vinagre"
+   ]
+  }
+ ],
+ "plagas": [
+  {
+   "nombre": "Mildiu",
+   "tipo": "hongo",
+   "nombre_cientifico": "Plasmopara viticola",
+   "sintomas": "Manchas aceitosas en haz, moho blanco en envés, defoliación",
+   "tratamiento_preventivo": "Cobre en dormancia y brotación, drenaje, marco de plantación amplio",
+   "tratamiento_curativo": "Fungicida sistémico (metalaxil + cobre) al primer síntoma",
+   "umbral_alerta": 0.7
+  },
+  {
+   "nombre": "Botrytis",
+   "tipo": "hongo",
+   "nombre_cientifico": "Botrytis cinerea",
+   "sintomas": "Podredumbre gris en racimos, bayas momificadas, esporulación gris",
+   "tratamiento_preventivo": "Deshoje, control de vigor, ventilación de dosel, eliminación de restos",
+   "tratamiento_curativo": "Fungicida específico (ciprodinil, fludioxonil) pre-cierre de racimo",
+   "umbral_alerta": 0.65
+  },
+  {
+   "nombre": "Oídio",
+   "tipo": "hongo",
+   "nombre_cientifico": "Erysiphe necator",
+   "sintomas": "Polvillo blanquecino en hojas, brotes y racimos, deformación",
+   "tratamiento_preventivo": "Azufre en espolvoreo desde brotación, ventilación del dosel",
+   "tratamiento_curativo": "Fungicida sistémico (quinoxifen, metrafenona) al detectar",
+   "umbral_alerta": 0.55
+  },
+  {
+   "nombre": "Antracnosis",
+   "tipo": "hongo",
+   "nombre_cientifico": "Elsinoe ampelina",
+   "sintomas": "Lesiones necróticas hundidas en hojas, brotes y bayas (\"ojo de pájaro\")",
+   "tratamiento_preventivo": "Poda de restos infectados, fungicida cúprico en dormancia",
+   "tratamiento_curativo": "Fungicida sistémico (difenoconazol) en brotación",
+   "umbral_alerta": 0.5
+  },
+  {
+   "nombre": "Yesca",
+   "tipo": "hongo",
+   "nombre_cientifico": "Phaeomoniella chlamydospora",
+   "sintomas": "Marchitez intermitente de brazos, hojas cloróticas con margen necrótico",
+   "tratamiento_preventivo": "Poda en tiempo seco, desinfección de herramientas, sellado de heridas",
+   "tratamiento_curativo": "Sin cura: reconstitución del brazo o arranque de la planta",
+   "umbral_alerta": 0.3
+  },
+  {
+   "nombre": "Eutipiosis",
+   "tipo": "hongo",
+   "nombre_cientifico": "Eutypa lata",
+   "sintomas": "Brazos muertos, brotes cortos y cloróticos, lesión en madera de corte",
+   "tratamiento_preventivo": "Podar en tiempo seco, proteger heridas de poda con pasta cicatrizante",
+   "tratamiento_curativo": "Reconstituir la planta con brazos nuevos desde el tronco",
+   "umbral_alerta": 0.3
+  },
+  {
+   "nombre": "Filoxera",
+   "tipo": "insecto",
+   "nombre_cientifico": "Daktulosphaira vitifoliae",
+   "sintomas": "Nodosidades y tumores en raíces, declive progresivo, clorosis",
+   "tratamiento_preventivo": "Uso exclusivo de portainjertos americanos resistentes",
+   "tratamiento_curativo": "Sin cura: arranque y replantar con portainjerto resistente",
+   "umbral_alerta": 0.5
+  },
+  {
+   "nombre": "Chanchito blanco",
+   "tipo": "insecto",
+   "nombre_cientifico": "Planococcus ficus",
+   "sintomas": "Colonias algodonosas en raíz, tronco y racimos, melaza y fumagina",
+   "tratamiento_preventivo": "Monitoreo con feromonas, liberación de Anagyrus pseudococci",
+   "tratamiento_curativo": "Insecticida sistémico (clorpirifos) dirigido al tronco y racimo",
+   "umbral_alerta": 0.6
+  },
+  {
+   "nombre": "Mosca del vinagre",
+   "tipo": "insecto",
+   "nombre_cientifico": "Drosophila suzukii",
+   "sintomas": "Perforaciones en bayas, oviposición, pudrición secundaria",
+   "tratamiento_preventivo": "Trampas con atrayente, cosecha oportuna, eliminación de fruta caída",
+   "tratamiento_curativo": "Insecticida específico (spinosad) cerca de cosecha, malla exclusión",
+   "umbral_alerta": 0.45
+  },
+  {
+   "nombre": "Trips",
+   "tipo": "insecto",
+   "nombre_cientifico": "Frankliniella occidentalis",
+   "sintomas": "Plateado en hojas, deformación de brotes y bayas, daño estético",
+   "tratamiento_preventivo": "Monitoreo con trampas adhesivas azules, cultivos trampa",
+   "tratamiento_curativo": "Insecticida selectivo (spinosad, abamectina) al superar umbral",
+   "umbral_alerta": 0.4
+  }
+ ],
+ "valles": [
+  {
+   "nombre": "Valle de Guadalupe",
+   "municipio": "Ensenada",
+   "region": "Baja California",
+   "parent": null,
+   "altitud_media_msnm": 350.0,
+   "superficie_viticola_ha": 2800.0,
+   "clima_winkler": "III"
+  },
+  {
+   "nombre": "Valle de San Vicente",
+   "municipio": "Ensenada",
+   "region": "Baja California",
+   "parent": null,
+   "altitud_media_msnm": 200.0,
+   "superficie_viticola_ha": 1200.0,
+   "clima_winkler": "III"
+  },
+  {
+   "nombre": "Valle de Ojos Negros",
+   "municipio": "Ensenada",
+   "region": "Baja California",
+   "parent": null,
+   "altitud_media_msnm": 700.0,
+   "superficie_viticola_ha": 900.0,
+   "clima_winkler": "II"
+  },
+  {
+   "nombre": "Valle de Santo Tomás",
+   "municipio": "Ensenada",
+   "region": "Baja California",
+   "parent": null,
+   "altitud_media_msnm": 250.0,
+   "superficie_viticola_ha": 800.0,
+   "clima_winkler": "III"
+  },
+  {
+   "nombre": "Valle de San Antonio de las Minas",
+   "municipio": "Ensenada",
+   "region": "Baja California",
+   "parent": "Valle de Guadalupe",
+   "altitud_media_msnm": 300.0,
+   "superficie_viticola_ha": 600.0,
+   "clima_winkler": "II"
+  },
+  {
+   "nombre": "Valle de La Grulla",
+   "municipio": "Ensenada",
+   "region": "Baja California",
+   "parent": null,
+   "altitud_media_msnm": 178.0,
+   "superficie_viticola_ha": 400.0,
+   "clima_winkler": "III"
+  },
+  {
+   "nombre": "Valle de Las Palmas",
+   "municipio": "Tecate",
+   "region": "Baja California",
+   "parent": null,
+   "altitud_media_msnm": 500.0,
+   "superficie_viticola_ha": 300.0,
+   "clima_winkler": "II"
+  }
+ ]
+}
