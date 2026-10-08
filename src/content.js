@@ -325,7 +325,8 @@ export const ui = pick({
     career: { eyebrow: '03 — Career', title: 'Career', experience: 'Experience', education: 'Education', languages: 'Languages', other: 'Other projects' },
     project: { flow: 'Flow', code: 'View code ↗', private: 'Private repository', demo: 'Try demo' },
     stack: { eyebrow: '09 — Tools', title: 'Stack' },
-    contact: { eyebrow: '10 — Contact', title: 'Shall we build something <em>together</em>?', cv: 'Download CV ↓' },
+    contact: { eyebrow: '10 — Contact', title: 'Shall we build something <em>together</em>?', cv: 'Download CV ↓', chat: 'Talk to Meido →' },
+    chat: { open: 'Talk to Meido', close: 'Close chat', full: 'Open in its own page ↗', sub: 'Omar’s AI assistant · live' },
     demo: { eyebrow: 'Interactive demo · Simulation', close: 'Close', closeAria: 'Close demo', loading: 'Loading…', error: 'The demo couldn’t be loaded.' },
   },
   es: {
@@ -344,7 +345,8 @@ export const ui = pick({
     career: { eyebrow: '03 — Trayectoria', title: 'Trayectoria', experience: 'Experiencia', education: 'Educación', languages: 'Idiomas', other: 'Otros proyectos' },
     project: { flow: 'Flujo', code: 'Ver código ↗', private: 'Repositorio privado', demo: 'Probar demo' },
     stack: { eyebrow: '09 — Herramientas', title: 'Stack' },
-    contact: { eyebrow: '10 — Contacto', title: '¿Construimos algo <em>juntos</em>?', cv: 'Descargar CV ↓' },
+    contact: { eyebrow: '10 — Contacto', title: '¿Construimos algo <em>juntos</em>?', cv: 'Descargar CV ↓', chat: 'Habla con Meido →' },
+    chat: { open: 'Habla con Meido', close: 'Cerrar chat', full: 'Abrir en su propia página ↗', sub: 'Asistente de IA de Omar · en vivo' },
     demo: { eyebrow: 'Demo interactiva · Simulación', close: 'Cerrar', closeAria: 'Cerrar demo', loading: 'Cargando…', error: 'No se pudo cargar el demo.' },
   },
 });

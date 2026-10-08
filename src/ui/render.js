@@ -134,6 +134,7 @@ function contactCh() {
       <li><a href="${person.github}" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
       <li><a href="${person.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
       <li><a href="${person.cv}" download>${esc(ui.contact.cv)}</a></li>
+      <li><a href="${import.meta.env.BASE_URL}meido/" data-chat-abrir>${esc(ui.contact.chat)}</a></li>
     </ul>
     <p class="meta">© 2026 ${esc(person.name)}</p>`, 'chapter-contact');
 }

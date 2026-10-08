@@ -6,12 +6,32 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "convex:ficha": "node scripts/ficha-meido.mjs",
+    "convex:dev": "npm run convex:ficha && convex dev",
+    "convex:deploy": "npm run convex:ficha && convex deploy",
+    "typecheck": "tsc --noEmit -p convex"
   },
   "dependencies": {
-    "three": "^0.186.1"
+    "@ai-sdk/provider": "^4.0.25",
+    "@convex-dev/agent": "^0.7.7",
+    "@convex-dev/rate-limiter": "^0.4.1",
+    "@openrouter/ai-sdk-provider": "^3.1.0",
+    "ai": "^7.0.134",
+    "convex": "^1.46.0",
+    "three": "^0.186.1",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
-    "vite": "^8.3.3"
+    "@edge-runtime/vm": "^5.0.0",
+    "@types/node": "^26.6.4",
+    "convex-test": "^0.0.60",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.3",
+    "vitest": "^5.0.3"
+  },
+  "allowScripts": {
+    "esbuild@0.27.0": true
   }
 }

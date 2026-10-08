@@ -1,0 +1,67 @@
+/* Chat con Meido: mismos colores y letras que el portafolio (oscuro, Inter + JetBrains Mono) */
+.mchat {
+  --c-bg: #0a0a0a;
+  --c-surface: #131313;
+  --c-surface-2: #1a1a1a;
+  --c-line: #262626;
+  --c-line-2: #3a3a3a;
+  --c-text: #f2f2f2;
+  --c-text-2: #a8a8a8;
+  --c-text-3: #6e6e6e;
+  --c-sans: 'Inter', system-ui, sans-serif;
+  --c-mono: 'JetBrains Mono', ui-monospace, monospace;
+  display: flex; flex-direction: column; min-height: 0;
+  color: var(--c-text); font: 400 15px/1.55 var(--c-sans);
+}
+.mchat-log { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding: 18px 18px 8px; overscroll-behavior: contain; }
+.mchat-msg { max-width: 86%; padding: 10px 14px; border-radius: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.mchat-msg a { color: inherit; text-underline-offset: 2px; }
+.mchat-meido { align-self: flex-start; background: var(--c-surface-2); border: 1px solid var(--c-line); border-bottom-left-radius: 4px; }
+.mchat-visitante { align-self: flex-end; background: var(--c-text); color: var(--c-bg); border-bottom-right-radius: 4px; }
+.mchat-pendiente { opacity: 0.6; }
+.mchat-escribiendo { display: flex; gap: 5px; align-items: center; padding: 14px 16px; }
+.mchat-escribiendo span { width: 6px; height: 6px; border-radius: 50%; background: var(--c-text-2); animation: mchat-punto 1.2s infinite ease-in-out; }
+.mchat-escribiendo span:nth-child(2) { animation-delay: 0.15s; }
+.mchat-escribiendo span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes mchat-punto { 0%, 60%, 100% { opacity: 0.25; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-3px); } }
+
+.mchat-sug { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 18px; }
+.mchat-sug:empty { display: none; }
+.mchat-sug button {
+  appearance: none; background: none; color: var(--c-text-2); cursor: pointer;
+  border: 1px solid var(--c-line-2); border-radius: 999px; padding: 6px 12px; font: 400 13px var(--c-sans);
+  transition: color 0.2s, border-color 0.2s;
+}
+.mchat-sug button:hover { color: var(--c-text); border-color: var(--c-text); }
+
+.mchat-estado { padding: 6px 18px 0; min-height: 0; font: 400 11.5px/1.5 var(--c-mono); color: var(--c-text-3); }
+.mchat-estado:empty { display: none; }
+.mchat-error { color: #ffb4a8; }
+.mchat-captcha:empty { display: none; }
+.mchat-captcha { padding: 8px 18px 0; }
+
+.mchat-form { display: flex; gap: 8px; align-items: flex-end; margin: 10px 18px 0; padding: 6px 6px 6px 14px; border: 1px solid var(--c-line-2); border-radius: 16px; background: var(--c-surface); }
+.mchat-form:focus-within { border-color: var(--c-text-2); }
+.mchat-campo {
+  flex: 1; resize: none; border: 0; outline: 0; background: none; color: var(--c-text);
+  font: 400 15px/1.5 var(--c-sans); padding: 6px 0; max-height: 140px;
+}
+.mchat-campo::placeholder { color: var(--c-text-3); }
+.mchat-enviar {
+  flex: none; appearance: none; border: 0; cursor: pointer; border-radius: 12px; height: 36px; padding: 0 14px;
+  background: var(--c-text); color: var(--c-bg); font: 500 13px var(--c-sans);
+}
+.mchat-enviar:disabled { opacity: 0.35; cursor: default; }
+
+.mchat-pie { display: flex; gap: 12px; align-items: flex-start; justify-content: space-between; padding: 8px 18px 14px; }
+.mchat-aviso { font: 400 11px/1.5 var(--c-sans); color: var(--c-text-3); }
+.mchat-nueva {
+  flex: none; appearance: none; background: none; border: 0; cursor: pointer; padding: 0;
+  font: 400 11px/1.5 var(--c-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-text-2);
+}
+.mchat-nueva:hover { color: var(--c-text); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mchat-escribiendo span { animation: none; opacity: 0.6; }
+}
+.mchat-campo:focus-visible { outline: none; } /* el borde del formulario ya marca el foco */
