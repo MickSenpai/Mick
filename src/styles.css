@@ -54,6 +54,11 @@ ul, ol { list-style: none; }
 .top-nav a:hover { color: var(--text); }
 .top-nav .cv { color: var(--text); border: 1px solid var(--line-2); padding: 7px 12px; }
 .top-nav .cv:hover { background: var(--text); color: var(--bg); }
+.top-nav .lang {
+  font: 400 12px var(--mono); letter-spacing: 0.08em; color: var(--text-2);
+  background: none; border: 1px solid var(--line); padding: 7px 10px; cursor: pointer; transition: color 0.2s, border-color 0.2s;
+}
+.top-nav .lang:hover, .top-nav .lang:focus-visible { color: var(--text); border-color: var(--line-2); }
 
 /* ---------- navegación de capítulos ---------- */
 .chapter-nav { position: fixed; right: clamp(16px, 2vw, 32px); top: 50%; transform: translateY(-50%); }
@@ -109,6 +114,7 @@ ul, ol { list-style: none; }
 .career-item h3 { font: 500 16px/1.4 var(--sans); }
 .career-item .period { margin: 4px 0 6px; text-transform: none; letter-spacing: 0.02em; }
 .career-item .label { margin-top: 24px; }
+.career-item .small + h3 { margin-top: 16px; }
 
 /* ---------- proyectos ---------- */
 .chapter-project .chapter-inner { width: min(600px, 46vw); }

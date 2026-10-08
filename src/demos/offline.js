@@ -1,5 +1,8 @@
 // Port a JavaScript de meido_movil/lib/offline.dart (modo sin conexión de Meido Móvil).
 // Mismas reglas y mismas respuestas; solo cambia el lenguaje.
+// La app real contesta en español; en la versión en inglés del sitio las respuestas
+// se traducen y se aceptan también «what time is it?» / «what day is it?».
+import { pick } from '../i18n.js';
 
 const NUMEROS_HORA = ['doce', 'una', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez', 'once'];
 const DIAS = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
@@ -60,8 +63,36 @@ export function horaFecha(texto, a = new Date()) {
     const dia = DIAS[(a.getDay() + 6) % 7]; // Dart: lunes = 1
     return `Hoy es ${dia} ${a.getDate()} de ${MESES[a.getMonth()]} de ${a.getFullYear()}, Señor.`;
   }
+  if (/^(hey )?(can you tell me )?(what time is it|what s the time|whats the time|the time)( please)?$/.test(t)) {
+    const hora = a.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    return `It's ${hora}, Sir.`;
+  }
+  if (/^(hey )?(what day is (it|today)|what s the date|whats the date|what is the date)( today)?( please)?$/.test(t)) {
+    const fecha = a.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    return `Today is ${fecha}, Sir.`;
+  }
   return null;
 }
+
+// Las respuestas de cada orden (la app real: las de español)
+const R = pick({
+  es: {
+    linterna: (on) => (on ? 'Linterna encendida.' : 'Linterna apagada.'),
+    temporizador: (n, unidad) => `Temporizador de ${n} ${unidad}.`,
+    alarma: (hh) => `Alarma puesta a las ${hh}.`,
+    siguiente: 'Siguiente.', anterior: 'Anterior.', pausa: 'En pausa.', play: 'Reanudada.',
+    volumen: (n) => `Volumen al ${n}.`, subido: 'Subido.', bajado: 'Bajado.', silenciado: 'Silenciado.',
+    abrir: (app) => `Abriendo ${app}.`,
+  },
+  en: {
+    linterna: (on) => (on ? 'Flashlight on.' : 'Flashlight off.'),
+    temporizador: (n, unidad) => `Timer set: ${n} ${unidad}.`,
+    alarma: (hh) => `Alarm set for ${hh}.`,
+    siguiente: 'Next.', anterior: 'Previous.', pausa: 'Paused.', play: 'Resumed.',
+    volumen: (n) => `Volume at ${n}.`, subido: 'Turned up.', bajado: 'Turned down.', silenciado: 'Muted.',
+    abrir: (app) => `Opening ${app}.`,
+  },
+});
 
 /** La orden sin red ({herramienta, args, respuesta}) o null si hace falta el cerebro. */
 export function interpretar(texto) {
@@ -72,7 +103,7 @@ export function interpretar(texto) {
   // Linterna
   if (/\b(linterna|flashlight|torch)\b/.test(t)) {
     const apagar = /\b(apaga|apagar|quita|off|turn off)\b/.test(t);
-    return orden('linterna', { encender: !apagar }, apagar ? 'Linterna apagada.' : 'Linterna encendida.');
+    return orden('linterna', { encender: !apagar }, R.linterna(!apagar));
   }
 
   // Temporizador: "temporizador de 5 minutos", "pon un timer de diez minutos"
@@ -82,7 +113,7 @@ export function interpretar(texto) {
     const unidad = temp[3];
     const seg = unidad.startsWith('h') ? n * 3600 : unidad.startsWith('m') ? n * 60 : n;
     if (seg > 0 && seg <= 86400) {
-      return orden('poner_temporizador', { segundos: seg }, `Temporizador de ${temp[2]} ${temp[3]}.`);
+      return orden('poner_temporizador', { segundos: seg }, R.temporizador(temp[2], temp[3]));
     }
   }
 
@@ -108,20 +139,20 @@ export function interpretar(texto) {
     }
     if (hora >= 0 && hora < 24 && minuto < 60) {
       const hh = `${hora}:${String(minuto).padStart(2, '0')}`;
-      return orden('poner_alarma', { hora: hh }, `Alarma puesta a las ${hh}.`);
+      return orden('poner_alarma', { hora: hh }, R.alarma(hh));
     }
   }
 
   // Música
   if (/\b(siguiente|next|salta|skip)\b/.test(t) && /\b(cancion|tema|musica|song|track)\b/.test(t)) {
-    return orden('controlar_musica', { accion: 'siguiente' }, 'Siguiente.');
+    return orden('controlar_musica', { accion: 'siguiente' }, R.siguiente);
   }
-  if (/\b(anterior|previous)\b/.test(t)) return orden('controlar_musica', { accion: 'anterior' }, 'Anterior.');
+  if (/\b(anterior|previous)\b/.test(t)) return orden('controlar_musica', { accion: 'anterior' }, R.anterior);
   if (/^(pausa|pausar|pause|para la musica|deten la musica|stop the music|pausa la musica)\b/.test(t)) {
-    return orden('controlar_musica', { accion: 'pausa' }, 'En pausa.');
+    return orden('controlar_musica', { accion: 'pausa' }, R.pausa);
   }
   if (/^(reanuda|continua|sigue|resume|play)\b.*\b(musica|cancion|music)?/.test(t) && !t.includes('pc') && !t.includes('computadora')) {
-    return orden('controlar_musica', { accion: 'play' }, 'Reanudada.');
+    return orden('controlar_musica', { accion: 'play' }, R.play);
   }
 
   // Volumen
@@ -129,17 +160,17 @@ export function interpretar(texto) {
     const fijo = /\b(?:al|a|to)\s+(\d{1,3})\b/.exec(t);
     if (fijo) {
       const n = Math.min(100, Math.max(0, parseInt(fijo[1], 10)));
-      return orden('volumen_telefono', { accion: 'fijar', nivel: n }, `Volumen al ${n}.`);
+      return orden('volumen_telefono', { accion: 'fijar', nivel: n }, R.volumen(n));
     }
-    if (/\b(sube|subir|up|mas alto)\b/.test(t)) return orden('volumen_telefono', { accion: 'subir' }, 'Subido.');
-    if (/\b(baja|bajar|down|mas bajo)\b/.test(t)) return orden('volumen_telefono', { accion: 'bajar' }, 'Bajado.');
-    if (/\b(silencia|mute)\b/.test(t)) return orden('volumen_telefono', { accion: 'silenciar' }, 'Silenciado.');
+    if (/\b(sube|subir|up|mas alto)\b/.test(t)) return orden('volumen_telefono', { accion: 'subir' }, R.subido);
+    if (/\b(baja|bajar|down|mas bajo)\b/.test(t)) return orden('volumen_telefono', { accion: 'bajar' }, R.bajado);
+    if (/\b(silencia|mute)\b/.test(t)) return orden('volumen_telefono', { accion: 'silenciar' }, R.silenciado);
   }
 
   // Abrir una app: "abre whatsapp" (no "abre la pestaña…", eso es del PC y necesita red)
   const abrir = /^(?:abre|abrir|open)\s+(?:la app de |la aplicacion de |el |la )?([a-z0-9ñ ]{2,30})$/.exec(t);
   if (abrir && !/\b(pestana|pc|computadora|archivo|carpeta)\b/.test(t)) {
-    return orden('abrir_app', { nombre: abrir[1].trim() }, `Abriendo ${abrir[1].trim()}.`);
+    return orden('abrir_app', { nombre: abrir[1].trim() }, R.abrir(abrir[1].trim()));
   }
   return null;
 }
