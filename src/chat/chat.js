@@ -9,6 +9,8 @@ import './chat.css';
 
 const CONVEX_URL = import.meta.env.VITE_CONVEX_URL;
 const SITEKEY = import.meta.env.VITE_TURNSTILE_SITEKEY;
+// Publicado sin captcha configurado: el backend rechazaría la conversación, así que ni se intenta
+const DISPONIBLE = Boolean(CONVEX_URL) && (Boolean(SITEKEY) || !import.meta.env.PROD);
 const EMAIL = 'mick967@hotmail.com';
 const CLAVE = 'meido-chat-clave';
 const MAX_TEXTO = 800;
@@ -204,7 +206,7 @@ export function montarChat(raiz, { de = 'portafolio', avatar = null } = {}) {
   pie.append(aviso, nueva);
   raiz.append(log, sugerencias, estado, captcha, form, pie);
 
-  const cliente = CONVEX_URL ? new ConvexClient(CONVEX_URL) : null;
+  const cliente = DISPONIBLE ? new ConvexClient(CONVEX_URL) : null;
   let clave = guardado.leer();
   let datos = null; // lo último del servidor
   let pendiente = null; // lo que el visitante acaba de mandar y aún no llega del servidor
