@@ -8,6 +8,7 @@ import { renderPage, chapters } from './ui/render.js';
 import { meidoLines, person, ui } from './content.js';
 import { lang, setLang } from './i18n.js';
 import { createDemoModal } from './ui/demo-modal.js';
+import { crearBurbujaChat } from './chat/burbuja.js';
 
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const flowQuery = window.matchMedia('(max-width: 900px), (max-height: 680px)');
@@ -50,6 +51,7 @@ const LAST = chapters.length - 1;
 let active = -1;
 let paused = false; // el fondo 3D se pausa mientras hay un demo abierto
 createDemoModal({ onOpen: () => (paused = true), onClose: () => (paused = false) });
+crearBurbujaChat();
 let detached = false;
 const tmp = new THREE.Vector3();
 
