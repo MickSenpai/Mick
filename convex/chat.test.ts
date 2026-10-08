@@ -7,7 +7,8 @@ import type { LanguageModelV4 } from "@ai-sdk/provider";
 import { convexTest } from "convex-test";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { api, internal } from "./_generated/api";
-import { FICHA_EN, FICHA_ES } from "./ficha";
+import { FICHA_EN } from "./ficha";
+import { idiomaDe } from "./idioma";
 import { INSTRUCCIONES } from "./meido";
 import schema from "./schema";
 
@@ -248,8 +249,38 @@ test("a los 15 días se borra la conversación con sus recados", async () => {
 
 test("las instrucciones llevan la ficha del portafolio y ningún teléfono", () => {
   expect(INSTRUCCIONES).toContain(FICHA_EN);
-  expect(INSTRUCCIONES).toContain(FICHA_ES);
   expect(FICHA_EN).toContain("CosechIA");
-  expect(FICHA_ES).toContain("Universidad Tecnológica de Tijuana");
+  expect(FICHA_EN).toContain("Universidad Tecnológica de Tijuana");
   expect(INSTRUCCIONES).not.toMatch(/\+?\d[\d\s().-]{8,}\d/);
 });
+
+describe("idioma de la respuesta", () => {
+  test("detecta el idioma de cada mensaje; lo ambiguo no decide", () => {
+    expect(idiomaDe("Hi! What does Omar work on?")).toBe("en");
+    expect(idiomaDe("Is he available for a remote job?")).toBe("en");
+    expect(idiomaDe("¿En qué trabaja Omar?")).toBe("es");
+    expect(idiomaDe("Hola, quisiera contactarlo")).toBe("es");
+    expect(idiomaDe("ok")).toBeNull();
+    expect(idiomaDe("Mick?")).toBeNull();
+  });
+
+  function ultimaOrden(modelo: unknown): string {
+    const llamadas = (modelo as { doGenerateCalls: { prompt: { role: string; content: unknown }[] }[] }).doGenerateCalls;
+    const system = llamadas[llamadas.length - 1].prompt.find((m) => m.role === "system");
+    return String(system?.content ?? "");
+  }
+
+  test("página en español pero le escriben en inglés: contesta en inglés, y lo ambiguo sigue en inglés", async () => {
+    const t = nuevo();
+    const clave = await empezar(t, "es");
+    const modelo = contesta("Sure.");
+    estado.modelo = modelo;
+    await escribir(t, clave, "Hi! What does Omar work on?");
+    expect(ultimaOrden(modelo)).toContain("Reply in English only");
+    await escribir(t, clave, "ok");
+    expect(ultimaOrden(modelo)).toContain("Reply in English only");
+    await escribir(t, clave, "¿Y está buscando trabajo?");
+    expect(ultimaOrden(modelo)).toContain("Responde solo en español");
+  });
+});
+

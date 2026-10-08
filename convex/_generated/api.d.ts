@@ -11,6 +11,7 @@
 import type * as chat from "../chat.js";
 import type * as crons from "../crons.js";
 import type * as ficha from "../ficha.js";
+import type * as idioma from "../idioma.js";
 import type * as limites from "../limites.js";
 import type * as meido from "../meido.js";
 import type * as recados from "../recados.js";
@@ -25,6 +26,7 @@ declare const fullApi: ApiFromModules<{
   chat: typeof chat;
   crons: typeof crons;
   ficha: typeof ficha;
+  idioma: typeof idioma;
   limites: typeof limites;
   meido: typeof meido;
   recados: typeof recados;

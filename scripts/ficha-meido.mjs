@@ -1,5 +1,6 @@
 // Genera convex/ficha.ts: lo que la Meido pública sabe de Omar, sacado de src/content.js
-// (en inglés y en español) para que nunca se desincronice del portafolio.
+// para que nunca se desincronice del portafolio. Solo en inglés: con la ficha también en
+// español, Meido tendía a pasarse al español; traduce ella cuando le escriben en español.
 //   node scripts/ficha-meido.mjs        (también corre antes de `npm run convex:deploy`)
 import { writeFileSync } from 'node:fs';
 import { createServer } from 'vite';
@@ -47,13 +48,11 @@ function ficha({ person, about, career, projects, stack }) {
 
 try {
   const en = ficha(await contenido('en'));
-  const es = ficha(await contenido('es'));
   const salida =
     '// GENERADO por scripts/ficha-meido.mjs desde src/content.js. No editar a mano.\n' +
-    `export const FICHA_EN = ${JSON.stringify(en)};\n\n` +
-    `export const FICHA_ES = ${JSON.stringify(es)};\n`;
+    `export const FICHA_EN = ${JSON.stringify(en)};\n`;
   writeFileSync(new URL('../convex/ficha.ts', import.meta.url), salida);
-  console.log(`convex/ficha.ts: ${en.length} + ${es.length} caracteres`);
+  console.log(`convex/ficha.ts: ${en.length} caracteres`);
 } finally {
   await server.close();
 }

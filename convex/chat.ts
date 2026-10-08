@@ -12,7 +12,8 @@ import {
   query,
 } from "./_generated/server";
 import { limites, MAX_MENSAJES, MAX_TEXTO } from "./limites";
-import { crearMeido, EMAIL } from "./meido";
+import { idiomaDe, ordenDeIdioma } from "./idioma";
+import { crearMeido, EMAIL, INSTRUCCIONES } from "./meido";
 import { vIdioma } from "./schema";
 
 const SALUDO = {
@@ -100,16 +101,19 @@ export const enviar = mutation({
       threadId: c.threadId,
       prompt: texto,
     });
+    // Contesta en el idioma en que le escriben (no en el de la página)
+    const hablando = idiomaDe(texto) ?? c.hablando ?? c.idioma;
     await ctx.db.patch("conversaciones", c._id, {
       mensajes: c.mensajes + 1,
       pensando: true,
       ultimo: Date.now(),
+      hablando,
     });
     await ctx.scheduler.runAfter(0, internal.chat.responder, {
       conversacion: c._id,
       threadId: c.threadId,
       promptMessageId: messageId,
-      idioma: c.idioma,
+      idioma: hablando,
     });
     return null;
   },
@@ -125,7 +129,11 @@ export const responder = internalAction({
   returns: v.null(),
   handler: async (ctx, args) => {
     try {
-      await crearMeido().generateText(ctx, { threadId: args.threadId }, { promptMessageId: args.promptMessageId });
+      await crearMeido().generateText(
+        ctx,
+        { threadId: args.threadId },
+        { promptMessageId: args.promptMessageId, system: `${INSTRUCCIONES}\n\n${ordenDeIdioma(args.idioma)}` },
+      );
     } catch (e) {
       console.error("Meido no pudo contestar:", e);
       await saveMessage(ctx, components.agent, {

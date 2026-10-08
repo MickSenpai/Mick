@@ -12,7 +12,8 @@ export default defineSchema({
     clave: v.string(),
     threadId: v.string(),
     de: v.string(), // de dónde llegó: "portafolio", "linkedin", "cv"…
-    idioma: vIdioma,
+    idioma: vIdioma, // el de la página al abrirla (saludo y avisos de error)
+    hablando: v.optional(vIdioma), // el del último mensaje del visitante en que se notó el idioma
     mensajes: v.number(), // cuántos ha enviado el visitante
     pensando: v.boolean(), // Meido está contestando
     ultimo: v.number(), // último movimiento (para borrarla a los 15 días)
