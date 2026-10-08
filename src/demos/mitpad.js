@@ -1,4 +1,37 @@
 import './mitpad.css';
+import { pick } from '../i18n.js';
+
+// Textos de la app real (en español); en la versión en inglés, traducidos
+const T = pick({
+  en: {
+    app: 'Mitpad (app interface)', nueva: '+ New Note', titulo: 'Note title (Optional)', tituloAria: 'Title',
+    contenido: 'Write your idea here. Meido will analyze it soon...', contenidoAria: 'Content',
+    guardar: 'Save Locally', actualizar: 'Update Locally', borrar: 'Delete',
+    capturada: 'Operation in <code>sync_queue</code> picked up by the Worker.',
+    detras: 'Behind the scenes', red: 'Network', conectada: 'Connected', sinRed: 'Offline',
+    local: 'Local SQLite · notes', nube: 'Convex · cloud', sinTitulo: 'Untitled', vacio: 'empty', colaVacia: 'empty queue',
+    obligatorio: 'The note content is required.',
+    actualizada: (id) => `✅ Note updated. UUID: ${id}`,
+    creada: (id) => `✅ New note created. UUID: ${id}`,
+    borrada: (id) => `🗑️ Note ${id} deleted locally and queued.`,
+    sinConexion: '❌ [Worker] No connection to the cloud: network unavailable',
+    iniciado: '🚀 [Worker] Offline-First engine started...',
+  },
+  es: {
+    app: 'Mitpad (interfaz de la app)', nueva: '+ Nueva Nota', titulo: 'Título de la nota (Opcional)', tituloAria: 'Título',
+    contenido: 'Escribe tu idea aquí. Meido la analizará pronto...', contenidoAria: 'Contenido',
+    guardar: 'Guardar Localmente', actualizar: 'Actualizar Localmente', borrar: 'Borrar',
+    capturada: 'Operación en <code>sync_queue</code> capturada por el Worker.',
+    detras: 'Detrás de escena', red: 'Red', conectada: 'Conectada', sinRed: 'Sin red',
+    local: 'SQLite local · notas', nube: 'Convex · nube', sinTitulo: 'Sin título', vacio: 'vacío', colaVacia: 'cola vacía',
+    obligatorio: 'El contenido de la nota es obligatorio.',
+    actualizada: (id) => `✅ Nota actualizada. UUID: ${id}`,
+    creada: (id) => `✅ Nueva nota creada. UUID: ${id}`,
+    borrada: (id) => `🗑️ Nota ${id} borrada localmente y encolada.`,
+    sinConexion: '❌ [Worker] Sin conexión con la nube: red no disponible',
+    iniciado: '🚀 [Worker] Motor Offline-First iniciado...',
+  },
+});
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 const uuid = () => (crypto.randomUUID ? crypto.randomUUID() : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
@@ -11,31 +44,31 @@ const TICK_MS = 2000;
 export function mount(root) {
   root.innerHTML = `
     <div class="mpdemo">
-      <section class="mp-app" aria-label="Mitpad (interfaz de la app)">
+      <section class="mp-app" aria-label="${T.app}">
         <div class="mp-header">
           <h3>Mitpad <span>Offline-First</span></h3>
-          <button class="mp-new" type="button">+ Nueva Nota</button>
+          <button class="mp-new" type="button">${T.nueva}</button>
         </div>
         <div class="mp-editor">
           <div class="mp-error" hidden></div>
-          <input type="text" placeholder="Título de la nota (Opcional)" aria-label="Título">
-          <textarea placeholder="Escribe tu idea aquí. Meido la analizará pronto..." aria-label="Contenido"></textarea>
+          <input type="text" placeholder="${T.titulo}" aria-label="${T.tituloAria}">
+          <textarea placeholder="${T.contenido}" aria-label="${T.contenidoAria}"></textarea>
           <div class="mp-actions">
-            <button class="mp-save" type="button">Guardar Localmente</button>
-            <button class="mp-delete" type="button" hidden>Borrar</button>
+            <button class="mp-save" type="button">${T.guardar}</button>
+            <button class="mp-delete" type="button" hidden>${T.borrar}</button>
           </div>
         </div>
-        <div class="mp-success" hidden><p><strong></strong></p><p>Operación en <code>sync_queue</code> capturada por el Worker.</p></div>
+        <div class="mp-success" hidden><p><strong></strong></p><p>${T.capturada}</p></div>
       </section>
 
-      <section class="mp-back" aria-label="Detrás de escena">
+      <section class="mp-back" aria-label="${T.detras}">
         <div class="mp-net">
-          <span class="label">Red</span>
-          <button class="mp-toggle" type="button" role="switch" aria-checked="true"><span></span>Conectada</button>
+          <span class="label">${T.red}</span>
+          <button class="mp-toggle" type="button" role="switch" aria-checked="true"><span></span>${T.conectada}</button>
         </div>
         <div class="mp-cols">
-          <div><p class="label">SQLite local · notas</p><ul class="mp-local"></ul></div>
-          <div><p class="label">Convex · nube</p><ul class="mp-cloud"></ul></div>
+          <div><p class="label">${T.local}</p><ul class="mp-local"></ul></div>
+          <div><p class="label">${T.nube}</p><ul class="mp-cloud"></ul></div>
         </div>
         <p class="label">sync_queue</p>
         <table class="mp-queue"><thead><tr><th>#</th><th>operation</th><th>note</th></tr></thead><tbody></tbody></table>
@@ -70,10 +103,10 @@ export function mount(root) {
   }
 
   function render() {
-    $('.mp-local').innerHTML = [...local].map(([id, n]) => `<li class="${activeNote?.id === id ? 'on' : ''}" data-id="${id}"><b>${esc(n.title || 'Sin título')}</b><small>${corto(id)}</small></li>`).join('') || '<li class="empty">vacío</li>';
-    $('.mp-cloud').innerHTML = [...cloud].map(([id, n]) => `<li><b>${esc(n.title || 'Sin título')}</b><small>${corto(id)}</small></li>`).join('') || '<li class="empty">vacío</li>';
-    $('.mp-queue tbody').innerHTML = queue.map((q) => `<tr><td>${q.qid}</td><td>${q.operation}</td><td>${corto(q.payload.id)}</td></tr>`).join('') || '<tr><td colspan="3" class="empty">cola vacía</td></tr>';
-    saveBtn.textContent = activeNote ? 'Actualizar Localmente' : 'Guardar Localmente';
+    $('.mp-local').innerHTML = [...local].map(([id, n]) => `<li class="${activeNote?.id === id ? 'on' : ''}" data-id="${id}"><b>${esc(n.title || T.sinTitulo)}</b><small>${corto(id)}</small></li>`).join('') || `<li class="empty">${T.vacio}</li>`;
+    $('.mp-cloud').innerHTML = [...cloud].map(([id, n]) => `<li><b>${esc(n.title || T.sinTitulo)}</b><small>${corto(id)}</small></li>`).join('') || `<li class="empty">${T.vacio}</li>`;
+    $('.mp-queue tbody').innerHTML = queue.map((q) => `<tr><td>${q.qid}</td><td>${q.operation}</td><td>${corto(q.payload.id)}</td></tr>`).join('') || `<tr><td colspan="3" class="empty">${T.colaVacia}</td></tr>`;
+    saveBtn.textContent = activeNote ? T.actualizar : T.guardar;
     delBtn.hidden = !activeNote;
   }
 
@@ -90,20 +123,20 @@ export function mount(root) {
     errEl.hidden = true;
     ok.hidden = true;
     if (!content.value.trim()) {
-      errEl.textContent = 'El contenido de la nota es obligatorio.';
+      errEl.textContent = T.obligatorio;
       errEl.hidden = false;
       return;
     }
     if (activeNote) {
       local.set(activeNote.id, { title: title.value, content: content.value });
       encolar('UPDATE', { id: activeNote.id, title: title.value, content: content.value });
-      mostrar(`✅ Nota actualizada. UUID: ${activeNote.id}`);
+      mostrar(T.actualizada(activeNote.id));
     } else {
       const id = uuid();
       activeNote = { id };
       local.set(id, { title: title.value, content: content.value });
       encolar('INSERT', { id, title: title.value, content: content.value });
-      mostrar(`✅ Nueva nota creada. UUID: ${id}`);
+      mostrar(T.creada(id));
     }
     render();
   });
@@ -113,7 +146,7 @@ export function mount(root) {
     const id = activeNote.id;
     local.delete(id);
     encolar('DELETE', { id });
-    mostrar(`🗑️ Nota ${id} borrada localmente y encolada.`);
+    mostrar(T.borrada(id));
     activeNote = null;
     title.value = '';
     content.value = '';
@@ -143,14 +176,14 @@ export function mount(root) {
   toggle.addEventListener('click', () => {
     online = !online;
     toggle.setAttribute('aria-checked', String(online));
-    toggle.lastChild.textContent = online ? 'Conectada' : 'Sin red';
+    toggle.lastChild.textContent = online ? T.conectada : T.sinRed;
   });
 
   // Worker: cada operación se borra de la cola solo cuando la nube la confirma
   function tick() {
     if (!queue.length) return;
     if (!online) {
-      log('❌ [Worker] Sin conexión con la nube: red no disponible');
+      log(T.sinConexion);
       return;
     }
     while (queue.length) {
@@ -164,7 +197,7 @@ export function mount(root) {
     render();
   }
 
-  log('🚀 [Worker] Motor Offline-First iniciado...');
+  log(T.iniciado);
   render();
   const timer = setInterval(tick, TICK_MS);
   return () => clearInterval(timer);

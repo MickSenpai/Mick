@@ -5,11 +5,33 @@ import { createCube } from './three/cube.js';
 import { createMeido } from './three/meido.js';
 import { createNarrator } from './ui/narrator.js';
 import { renderPage, chapters } from './ui/render.js';
-import { meidoLines } from './content.js';
+import { meidoLines, person, ui } from './content.js';
+import { lang, setLang } from './i18n.js';
 import { createDemoModal } from './ui/demo-modal.js';
 
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const flowQuery = window.matchMedia('(max-width: 900px), (max-height: 680px)');
+
+// ---------- idioma: el HTML viene en inglés; aquí se pone el del visitante ----------
+function applyLanguage() {
+  const get = (path) => path.split('.').reduce((o, k) => o?.[k], ui);
+  document.documentElement.lang = lang;
+  document.title = ui.title;
+  document.querySelector('meta[name="description"]')?.setAttribute('content', ui.description);
+  document.querySelector('meta[property="og:title"]')?.setAttribute('content', ui.title);
+  document.querySelector('meta[property="og:description"]')?.setAttribute('content', ui.ogDescription);
+  document.querySelectorAll('[data-i18n]').forEach((el) => (el.textContent = get(el.dataset.i18n)));
+  document.querySelectorAll('[data-i18n-aria]').forEach((el) => el.setAttribute('aria-label', get(el.dataset.i18nAria)));
+  document.querySelectorAll('a.cv').forEach((a) => a.setAttribute('href', person.cv));
+  const other = lang === 'en' ? 'es' : 'en';
+  document.querySelectorAll('[data-lang-switch]').forEach((btn) => {
+    btn.textContent = ui.switchLang.label;
+    btn.setAttribute('aria-label', ui.switchLang.aria);
+    btn.setAttribute('lang', other);
+    btn.addEventListener('click', () => setLang(other));
+  });
+}
+applyLanguage();
 
 renderPage(document.getElementById('content'), document.getElementById('chapter-nav'));
 

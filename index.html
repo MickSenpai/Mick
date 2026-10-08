@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Omar Reyes — Portfolio</title>
-  <meta name="description" content="Omar Reyes (Mick): desarrollador de software multiplataforma enfocado en IA aplicada, arquitecturas Offline‑First y herramientas conectadas.">
+  <meta name="description" content="Omar Reyes (Mick): cross‑platform software developer focused on applied AI, Offline‑First architectures and connected tools.">
   <meta name="theme-color" content="#0a0a0a">
   <meta property="og:title" content="Omar Reyes — Portfolio">
-  <meta property="og:description" content="Desarrollador de software multiplataforma · IA aplicada. Tijuana, B.C.">
+  <meta property="og:description" content="Cross‑platform software developer · Applied AI. Tijuana, B.C.">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='1' width='30' height='30' rx='6' fill='%232a2a2a'/%3E%3Crect x='9' y='9' width='14' height='14' rx='2' fill='%23f2f2f2'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,21 +15,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 </head>
 <body>
-  <a class="skip" href="#meido" data-goto="meido">Saltar a los proyectos</a>
+  <a class="skip" href="#meido" data-goto="meido" data-i18n="skip">Skip to projects</a>
 
   <canvas id="bg" aria-hidden="true"></canvas>
 
   <header class="site-header">
     <a class="brand" href="#inicio" data-goto="inicio">Omar Reyes</a>
-    <nav aria-label="Principal" class="top-nav">
-      <a href="#meido" data-goto="meido">Proyectos</a>
-      <a href="#trayectoria" data-goto="trayectoria">Trayectoria</a>
-      <a href="#contacto" data-goto="contacto">Contacto</a>
-      <a class="cv" href="%BASE_URL%cv/Omar_Reyes_CV.pdf" download>CV ↓</a>
+    <nav aria-label="Main" class="top-nav" data-i18n-aria="navMain">
+      <a href="#meido" data-goto="meido" data-i18n="nav.projects">Projects</a>
+      <a href="#trayectoria" data-goto="trayectoria" data-i18n="nav.career">Career</a>
+      <a href="#contacto" data-goto="contacto" data-i18n="nav.contact">Contact</a>
+      <a class="cv" href="%BASE_URL%cv/Omar_Reyes_Resume.pdf" download>CV ↓</a>
+      <button class="lang" type="button" data-lang-switch lang="es" aria-label="Ver en español">ES</button>
     </nav>
   </header>
 
-  <nav aria-label="Capítulos" class="chapter-nav"><ol id="chapter-nav"></ol></nav>
+  <nav aria-label="Chapters" class="chapter-nav" data-i18n-aria="navChapters"><ol id="chapter-nav"></ol></nav>
 
   <main id="content"></main>
 

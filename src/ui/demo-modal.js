@@ -1,4 +1,4 @@
-import { projects } from '../content.js';
+import { projects, ui } from '../content.js';
 
 // Cada demo se descarga solo al abrirlo (no pesa en la carga inicial)
 const loaders = {
@@ -17,11 +17,11 @@ export function createDemoModal({ onOpen, onClose } = {}) {
     <div class="demo-shell">
       <header class="demo-head">
         <div>
-          <p class="eyebrow">Demo interactiva · Simulación</p>
+          <p class="eyebrow">${ui.demo.eyebrow}</p>
           <h2 id="demo-title" class="demo-title"></h2>
           <p class="demo-note"></p>
         </div>
-        <button class="demo-close" type="button" aria-label="Cerrar demo">Cerrar <span aria-hidden="true">✕</span></button>
+        <button class="demo-close" type="button" aria-label="${ui.demo.closeAria}">${ui.demo.close} <span aria-hidden="true">✕</span></button>
       </header>
       <div class="demo-body"></div>
     </div>`;
@@ -39,7 +39,7 @@ export function createDemoModal({ onOpen, onClose } = {}) {
     opener = trigger || null;
     title.textContent = p.name;
     note.textContent = p.demo;
-    body.innerHTML = '<p class="demo-loading">Cargando…</p>';
+    body.innerHTML = `<p class="demo-loading">${ui.demo.loading}</p>`;
     dialog.showModal();
     document.documentElement.classList.add('demo-open');
     onOpen?.();
@@ -49,7 +49,7 @@ export function createDemoModal({ onOpen, onClose } = {}) {
       body.innerHTML = '';
       cleanup = mod.mount(body) || null;
     } catch (err) {
-      body.innerHTML = '<p class="demo-loading">No se pudo cargar el demo.</p>';
+      body.innerHTML = `<p class="demo-loading">${ui.demo.error}</p>`;
       console.error(err);
     }
   }
