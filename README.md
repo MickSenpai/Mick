@@ -1,150 +1,63 @@
-<p align="center">
-  <svg width="960" height="240" viewBox="0 0 960 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mick banner">
-    <defs>
-      <linearGradient id="bg" x1="0" x1="1" y1="0" y2="1">
-        <stop offset="0%" stop-color="#0F172A"/>
-        <stop offset="50%" stop-color="#111827"/>
-        <stop offset="100%" stop-color="#030712"/>
-      </linearGradient>
-      <linearGradient id="pulse" x1="0" x1="1" y1="0" y2="1">
-        <stop offset="0%" stop-color="#7C3AED"/>
-        <stop offset="50%" stop-color="#22D3EE"/>
-        <stop offset="100%" stop-color="#34D399"/>
-      </linearGradient>
-      <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(240 80) rotate(90) scale(280 420)">
-        <stop stop-color="#A78BFA" stop-opacity="0.9"/>
-        <stop offset="1" stop-color="#A78BFA" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-    <rect width="960" height="240" rx="26" fill="url(#bg)"/>
-    <circle cx="210" cy="90" r="185" fill="url(#glow)"/>
-    <circle cx="720" cy="160" r="160" fill="#0EA5E9" opacity="0.14"/>
-    <g>
-      <path d="M760 58C810 58 852 100 852 150C852 200 810 242 760 242C710 242 668 200 668 150C668 100 710 58 760 58Z" fill="url(#pulse)" opacity="0.15">
-        <animateTransform attributeName="transform" type="translate" values="0 0; 10 -6; -8 8; 0 0" dur="8s" repeatCount="indefinite"/>
-      </path>
-      <circle cx="760" cy="150" r="48" fill="none" stroke="url(#pulse)" stroke-width="5" opacity="0.9">
-        <animate attributeName="r" values="42;52;42" dur="3s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="760" cy="150" r="24" fill="url(#pulse)" opacity="0.9"/>
-    </g>
-    <text x="70" y="105" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="700">Mick</text>
-    <text x="70" y="150" fill="#7DD3FC" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="500">AI tools • Privacy-first products • Local-first workflows</text>
-    <text x="70" y="188" fill="#A5B4FC" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="500">Building software that feels like an upgrade, not a distraction.</text>
-  </svg>
-</p>
-
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=7AF1FF&center=true&vCenter=true&width=900&lines=AI+%26+Agent+Builder;Privacy+advocate;Linux+%2F+macOS+productivity+hacker;Curator+of+awesome+tech+lists;Building+the+future" alt="Typing banner" />
-</div>
 
-<p align="center">
-  <a href="https://github.com/MickSenpai"><img src="https://img.shields.io/badge/GitHub-MickSenpai-181717?style=for-the-badge&logo=github" alt="GitHub" /></a>
-  <img src="https://img.shields.io/github/followers/MickSenpai?style=for-the-badge&logo=github&label=Followers" alt="GitHub followers" />
-  <img src="https://img.shields.io/github/stars/MickSenpai?style=for-the-badge&logo=github&label=Stars" alt="GitHub stars" />
-  <img src="https://img.shields.io/badge/Focus-AI+Products-8B5CF6?style=for-the-badge" alt="Focus" />
+<p><sub>MICK · BUILDS TOOLS THAT GIVE YOU MORE CONTROL</sub></p>
+
+<h1>Useful software. Fewer distractions. Your data stays yours.</h1>
+
+<p>I’m Mick — a product-minded developer drawn to local AI, privacy-first software, and tools that fit naturally into the way people work.</p>
+
+<p>
+  <a href="https://github.com/MickSenpai?tab=repositories">Projects</a> ·
+  <a href="https://github.com/MickSenpai">GitHub</a>
 </p>
 
-## 👋 About me
-
-<img src="https://media.tenor.com/FwNEO32K3sMAAAAi/anime-coding.gif" width="240" align="right" alt="Anime coding GIF" style="border-radius: 12px; margin-left: 20px; margin-bottom: 20px;" />
-
-I build tools, lists, and desktop apps around the things I care about most. When I'm not configuring Hyprland on Arch Linux or hanging out with my cat, I'm usually hacking together local AI workflows or curating developer resources.
-
-I like turning ideas into practical products that actually help people work faster, better, and with more control over their own data. 
-
-- **AI agents & local workflows:** Pushing the limits of local LLMs and TTS systems.
-- **Privacy-respecting software:** Cleaner metadata and safer digital habits.
-- **Productivity tooling:** Fast, useful desktop experiences built in Rust and Tauri.
-- **Curated knowledge:** Awesome lists for AI, developer tooling, and software ecosystems.
-
-## ⚡ Core themes
-
-- `AI & Agents` — developer tools, agent ecosystems, continuous local processing
-- `Privacy` — cleaner metadata, safer workflows, better digital hygiene
-- `Productivity` — offline-first utilities, local tools, and workflow acceleration
-- `Curated knowledge` — awesome lists for AI, tools, software, and workflows
-- `Modern tooling` — building with Rust, Tauri, TypeScript, and Python
-
-## 🧩 Featured projects
-
-### High-impact product work
-
-| Project | Description | Tech |
-|---------|-------------|------|
-| **[M.E.I.D.O.](#)** | Personal virtual assistant with continuous local speech recognition (`faster-whisper`), vector-based semantic memory (`pgvector` / `all-MiniLM-L6-v2`), and ElevenLabs TTS integration. | Python + PyQt6 + PostgreSQL |
-| **[Mitpad](#)** | Offline-first note-taking application designed for desktop, web, and mobile with seamless local/cloud synchronization. | Tauri + Rust + TypeScript + SQLite |
-| [dsh-studio](https://github.com/Moresyl/dsh-studio) | DeepSeek Harness native desktop app for Linux/macOS/Windows | Rust + Tauri |
-| [cchub](https://github.com/Moresyl/cchub) | Desktop hub for Claude Code MCP servers, profiles, workflows | Rust |
-| [metaclean](https://github.com/Moresyl/metaclean) | Privacy cleaner for metadata in images, Office, PDFs, text | TypeScript + Rust |
-| [snapimg](https://github.com/Moresyl/snapimg) | Privacy-first image optimizer with lossless compression | Rust + React |
-
-### Tools & utilities
-
-| Project | Description |
-|---------|-------------|
-| [hands-off](https://github.com/Moresyl/hands-off) | Keep coding-agent diffs inside the scope you actually requested |
-| [optik-sol](https://github.com/Moresyl/optik-sol) | Mobile-first in-page developer console for debugging |
-| [postcss-adaptive-matrix](https://github.com/Moresyl/postcss-adaptive-matrix) | Responsive design compiler for multi-profile layouts |
-| [BatchRenamePro](https://github.com/Moresyl/BatchRenamePro) | Safe, modern batch renamer |
-
-### Knowledge & curated resources
-
-Comprehensive collections of AI, developer tools, privacy, and productivity resources:
-
-- [awesome-ai-agents-2026](https://github.com/Moresyl/awesome-ai-agents-2026) — AI agents, frameworks, and tools for 2026 (300+ resources)
-- [awesome-ai-devtools](https://github.com/Moresyl/awesome-ai-devtools) — AI-powered developer tools
-- [awesome-local-ai](https://github.com/Moresyl/awesome-local-ai) — Local AI tools and resources (Ollama, local models, etc.)
-- [awesome-privacy](https://github.com/Moresyl/awesome-privacy) — Privacy-respecting software and services
-- [awesome-vibe-coding](https://github.com/Moresyl/awesome-vibe-coding) — Vibe coding references and AI collaboration
-
-...and 50+ more awesome lists covering everything from security to productivity to design tools.
-
-## 🛠️ Tech Stack
-
-<p align="left">
-  <img src="https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white" alt="Rust" />
-  <img src="https://img.shields.io/badge/Tauri-24C8DB?style=for-the-badge&logo=tauri&logoColor=white" alt="Tauri" />
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white" alt="Arch Linux" />
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
-  <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows" />
-</p>
-
-## 📌 Current focus
-
-I'm currently exploring and shipping around:
-
-- ✨ Local-first AI experiences, expanding vector memories (`pgvector`), and agent tooling
-- 🔒 Privacy-aware desktop software and metadata cleaning
-- 🚀 Cleaner developer workflow utilities (mostly via terminal/kitty)
-- 🎯 Building tools that feel like a natural extension of your workflow
-
-## 🌊 Signature vibe
-
-> I build products that feel sharp, useful, and a little bit futuristic — with practicality at the core.
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=MickSenpai&show_icons=true&theme=radical&hide_border=true&count_private=true" alt="GitHub stats" />
-</p>
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com/?user=MickSenpai&theme=radical&hide_border=true" alt="GitHub streak stats" />
-</p>
-
----
-
-<div align="center">
-  <h3>💡 Let's build something interesting together</h3>
-  <p>I'm always exploring new ideas in AI, privacy, and developer tooling.</p>
-  <a href="https://github.com/MickSenpai?tab=repositories"><img src="https://img.shields.io/badge/Explore_my_repos-Let's_Go-0EA5E9?style=for-the-badge" alt="View all repos" /></a>
 </div>
 
 ---
 
-<p align="center">
-  <i>Powered by curiosity, AI, and the desire to ship tools that make life better.</i><br/>
-  <i>Last updated: 2026</i>
+## What I care about
+
+I like taking ambitious ideas and making them practical: software that feels capable without getting in your way. That often means keeping things local, respecting privacy, and sweating the small details that make a tool pleasant to use.
+
+- **Local AI & agents** — useful assistants, speech, memory, and workflows that can run close to home.
+- **Privacy by default** — clearer control over files, metadata, and personal data.
+- **Thoughtful productivity tools** — fast, focused apps that feel like part of your workflow.
+- **Curated knowledge** — finding good tools and making them easier for others to discover.
+
+## Things I’m building
+
+| Project | What it is | Built with |
+| --- | --- | --- |
+| [M.E.I.D.O.](https://github.com/MickSenpai/M.E.I.D.O) | A personal assistant exploring continuous speech, semantic memory, and natural voice interaction. | Python, PyQt6, PostgreSQL |
+| [Mitpad](https://github.com/MickSenpai/Mitpad) | An offline-first notes app for keeping ideas close and syncing them across devices. | Tauri, Rust, TypeScript, SQLite |
+| [dsh-studio](https://github.com/Moresyl/dsh-studio) | A native desktop app for working with DeepSeek Harness. | Rust, Tauri |
+| [cchub](https://github.com/Moresyl/cchub) | A desktop hub for Claude Code MCP servers, profiles, and workflows. | Rust |
+| [metaclean](https://github.com/Moresyl/metaclean) | Tools for inspecting and cleaning metadata from everyday files. | TypeScript, Rust |
+| [snapimg](https://github.com/Moresyl/snapimg) | A privacy-minded image optimizer focused on lossless compression. | Rust, React |
+
+I also maintain collections of useful projects and references, including [awesome-ai-agents-2026](https://github.com/Moresyl/awesome-ai-agents-2026), [awesome-local-ai](https://github.com/Moresyl/awesome-local-ai), and [awesome-privacy](https://github.com/Moresyl/awesome-privacy).
+
+## My toolkit
+
+<p>
+  <img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white" alt="Rust" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tauri-24C8DB?style=flat-square&logo=tauri&logoColor=white" alt="Tauri" />
+  <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL" />
 </p>
+
+Most days, you’ll find me on Arch Linux, tinkering with a local workflow, or taking a break with my cat.
+
+## What’s next
+
+I’m spending time on local-first AI, agent tooling, and small utilities that make everyday work feel smoother. I enjoy collaborating with people who care about the craft and ship things that solve real problems.
+
+<div align="center">
+
+**Have an interesting project in AI, privacy, or developer tools?** [Come say hi](https://github.com/MickSenpai).
+
+<sub>Made with curiosity, a terminal, and a preference for tools that stay out of the way.</sub>
+
+</div>
