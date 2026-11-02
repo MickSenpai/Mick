@@ -24,18 +24,18 @@ I like taking ambitious ideas and making them practical: software that feels cap
 - **Thoughtful productivity tools** — fast, focused apps that feel like part of your workflow.
 - **Curated knowledge** — finding good tools and making them easier for others to discover.
 
-## Things I’m building
+## Selected projects
 
-| Project | What it is | Built with |
+| Project | What it does | Built with |
 | --- | --- | --- |
-| [M.E.I.D.O.](https://github.com/MickSenpai/M.E.I.D.O) | A personal assistant exploring continuous speech, semantic memory, and natural voice interaction. | Python, PyQt6, PostgreSQL |
-| [Mitpad](https://github.com/MickSenpai/Mitpad) | An offline-first notes app for keeping ideas close and syncing them across devices. | Tauri, Rust, TypeScript, SQLite |
-| [dsh-studio](https://github.com/Moresyl/dsh-studio) | A native desktop app for working with DeepSeek Harness. | Rust, Tauri |
-| [cchub](https://github.com/Moresyl/cchub) | A desktop hub for Claude Code MCP servers, profiles, and workflows. | Rust |
-| [metaclean](https://github.com/Moresyl/metaclean) | Tools for inspecting and cleaning metadata from everyday files. | TypeScript, Rust |
-| [snapimg](https://github.com/Moresyl/snapimg) | A privacy-minded image optimizer focused on lossless compression. | Rust, React |
+| [M.E.I.D.O.](https://github.com/MickSenpai/M.E.I.D.O) | A personal assistant spanning a Linux desktop and Android. It brings together voice, local system tools, shared memory and reminders, and a character interface. | Python, PyQt6, GTK, Convex, Whisper |
+| [M.E.I.D.O Mobile](https://github.com/MickSenpai/meido_movil) | Android companion that works without the PC for phone tasks and supported offline commands, while sharing chat, memory and approvals with the desktop. | Flutter, Dart, Convex |
+| [Mitpad](https://github.com/MickSenpai/Mitpad) | A private web workspace for projects, tasks, notes, decisions, files and AI agents, with a 3D knowledge map and remote MCP integration. | SvelteKit, TypeScript, Convex, MCP, Three.js |
+| [RigM](https://github.com/MickSenpai/RigM) | Desktop editor for preparing animatable 2D characters and reviewing GLB/VRM avatars, with rigging, animation, validation and CLI workflows. | Python, PyQt6, Three.js, Blender |
+| CosechIA | Vineyard and winery management for Baja California, with the domain-specific assistant Vini, hybrid knowledge retrieval and operational dashboards. | PHP, Laravel, Vue, PostgreSQL, pgvector |
+| [Autum](https://github.com/MickSenpai/autum) | ServiceDesk Plus monitor that alerts a Telegram channel about unassigned tickets and repeats reminders until someone acknowledges them. | Node.js, Playwright, Telegram Bot API |
 
-I also maintain collections of useful projects and references, including [awesome-ai-agents-2026](https://github.com/Moresyl/awesome-ai-agents-2026), [awesome-local-ai](https://github.com/Moresyl/awesome-local-ai), and [awesome-privacy](https://github.com/Moresyl/awesome-privacy).
+These projects explore applied AI, cross-device workflows, knowledge tools, and character animation. The portfolio site has fuller project notes and interactive demos; its bilingual project content lives in `src/content.js`.
 
 ## My toolkit
 

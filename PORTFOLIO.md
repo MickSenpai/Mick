@@ -25,10 +25,15 @@ npm run build    # genera dist/
 | `convex/` | Backend de la Meido pública (otro proyecto de Convex, aparte de la nube privada de M.E.I.D.O) |
 | `public/cv/` · `public/logos/` | CV descargable (`Omar_Reyes_Resume.pdf` en inglés, `Omar_Reyes_CV.pdf` en español) y logo de Autum |
 
+## Proyectos del portafolio
+
+Las descripciones bilingües viven en `src/content.js`; el `README.md` del repositorio ofrece un resumen en inglés. El portafolio presenta M.E.I.D.O (escritorio), Meido Móvil, Mitpad, RigM, Autum y CosechIA. Sus demos del navegador son simulaciones o muestras interactivas, no conexiones a los servicios de cada proyecto. La muestra de Mitpad conserva el prototipo inicial de notas para escritorio; el producto actual es el workspace web.
+
 ## Notas
 - El cubo solo gira capas que no tocan la esquina de Meido, así su hueco siempre es la esquina frontal.
   Al llegar a Contacto se resuelve deshaciendo exactamente los giros hechos.
 - Para cambiar una frase de Meido o un proyecto, edita solo `src/content.js` (las dos versiones, `en` y `es`).
+- El orden de proyectos y las etiquetas de navegación se generan desde los datos. Las posiciones de Stack y Contacto también se resuelven desde la lista de capítulos.
 - Los demos (`src/demos/`) tienen sus textos en un bloque `pick({ en, es })` al principio de cada archivo.
 - Respeta `prefers-reduced-motion` (sin giros ni efecto de escritura).
 
