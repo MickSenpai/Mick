@@ -4,7 +4,7 @@ import { pick } from '../i18n.js';
 // Textos de la app real (en español); en la versión en inglés, traducidos
 const T = pick({
   en: {
-    app: 'Mitpad (app interface)', nueva: '+ New Note', titulo: 'Note title (Optional)', tituloAria: 'Title',
+    app: 'Mitpad (early desktop prototype)', nueva: '+ New Note', titulo: 'Note title (Optional)', tituloAria: 'Title',
     contenido: 'Write your idea here. Meido will analyze it soon...', contenidoAria: 'Content',
     guardar: 'Save Locally', actualizar: 'Update Locally', borrar: 'Delete',
     capturada: 'Operation in <code>sync_queue</code> picked up by the Worker.',
@@ -18,7 +18,7 @@ const T = pick({
     iniciado: '🚀 [Worker] Offline-First engine started...',
   },
   es: {
-    app: 'Mitpad (interfaz de la app)', nueva: '+ Nueva Nota', titulo: 'Título de la nota (Opcional)', tituloAria: 'Título',
+    app: 'Mitpad (prototipo inicial de escritorio)', nueva: '+ Nueva Nota', titulo: 'Título de la nota (Opcional)', tituloAria: 'Título',
     contenido: 'Escribe tu idea aquí. Meido la analizará pronto...', contenidoAria: 'Contenido',
     guardar: 'Guardar Localmente', actualizar: 'Actualizar Localmente', borrar: 'Borrar',
     capturada: 'Operación en <code>sync_queue</code> capturada por el Worker.',
@@ -46,7 +46,7 @@ export function mount(root) {
     <div class="mpdemo">
       <section class="mp-app" aria-label="${T.app}">
         <div class="mp-header">
-          <h3>Mitpad <span>Offline-First</span></h3>
+          <h3>Mitpad <span>${pick({ en: 'Early prototype', es: 'Prototipo inicial' })}</span></h3>
           <button class="mp-new" type="button">${T.nueva}</button>
         </div>
         <div class="mp-editor">

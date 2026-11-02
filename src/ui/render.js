@@ -94,6 +94,9 @@ function projectCh(p, n) {
   const repo = p.repo
     ? `<a class="link" href="${p.repo}" target="_blank" rel="noopener noreferrer">${esc(ui.project.code)}</a>`
     : `<span class="private">${esc(ui.project.private)}</span>`;
+  const demo = p.demo
+    ? `<button class="demo-btn" type="button" data-demo="${p.id}" aria-haspopup="dialog">${esc(ui.project.demo)}</button>`
+    : '';
   return chapter(4 + n, `
     <article class="project">
       <header class="project-head">
@@ -111,13 +114,13 @@ function projectCh(p, n) {
       ${tags(p.stack)}
       <footer class="project-foot">
         <span class="status">${esc(p.status)}</span>
-        <span class="foot-actions">${repo}<button class="demo-btn" type="button" data-demo="${p.id}" aria-haspopup="dialog">${esc(ui.project.demo)}</button></span>
+        <span class="foot-actions">${repo}${demo}</span>
       </footer>
     </article>`, 'chapter-project');
 }
 
 function stackCh() {
-  return chapter(9, `
+  return chapter(chapters.findIndex(({ id }) => id === 'stack'), `
     <p class="eyebrow">${esc(ui.stack.eyebrow)}</p>
     <h2 id="stack-title" class="title">${esc(ui.stack.title)}</h2>
     <div class="stack">
@@ -126,7 +129,7 @@ function stackCh() {
 }
 
 function contactCh() {
-  return chapter(10, `
+  return chapter(chapters.findIndex(({ id }) => id === 'contacto'), `
     <p class="eyebrow">${esc(ui.contact.eyebrow)}</p>
     <h2 id="contacto-title" class="title display-sm">${ui.contact.title}</h2>
     <ul class="contact">
