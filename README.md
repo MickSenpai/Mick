@@ -24,13 +24,16 @@ I like taking ambitious ideas and making them practical: software that feels cap
 - **Thoughtful productivity tools** — fast, focused apps that feel like part of your workflow.
 - **Curated knowledge** — finding good tools and making them easier for others to discover.
 
-## Things I’m building
+## Selected projects
 
-| Project | What it is | Built with |
+| Project | What it does | Built with |
 | --- | --- | --- |
 | M.E.I.D.O. *(private)* | A personal desktop assistant with continuous speech, semantic memory and a control centre for coding agents (Claude Code, Codex, OpenCode). | Python, PyQt6, Tauri, React, Convex |
+| M.E.I.D.O Mobile *(private)* | Android companion that works without the PC for phone tasks, sharing chat, memory and approvals with the desktop. | Flutter, Dart, Convex |
 | [Mitpad](https://github.com/MickSenpai/Mitpad) | A web workspace where projects, tasks, notes and AI agents meet through a remote MCP server and a 3D map. | SvelteKit, TypeScript, Convex, MCP |
 | [MeshingUp](https://github.com/MickSenpai/MeshingUp) | A desktop editor and CLI that rigs 2D illustrations and GLB/VRM avatars for reactive animation. | Python, PyQt6, Three.js, Blender |
+| CosechIA *(private)* | Vineyard and winery management for Baja California with the domain-specific assistant Vini and hybrid knowledge retrieval. | PHP, Laravel, Vue, PostgreSQL, pgvector |
+| [Autum](https://github.com/MickSenpai/autum) | ServiceDesk Plus monitor that alerts on Telegram about unassigned tickets until someone acknowledges them. | Node.js, Playwright, Telegram Bot API |
 | [AI-Virtual-Mouse](https://github.com/MickSenpai/AI-Virtual-Mouse) | A virtual mouse driven by real-time hand gestures. | Python, OpenCV, MediaPipe |
 | [dsh-studio](https://github.com/Moresyl/dsh-studio) | A native desktop app for working with DeepSeek Harness. | Rust, Tauri |
 | [cchub](https://github.com/Moresyl/cchub) | A desktop hub for Claude Code MCP servers, profiles, and workflows. | Rust |

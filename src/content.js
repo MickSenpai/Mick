@@ -132,7 +132,7 @@ const projectText = pick({
         'Agent control centre: delegate, follow and approve Claude Code, Codex and OpenCode sessions, with embedded terminals and isolated git worktrees',
         'New Tauri + React interface and a voxel world for the avatar; memory shared with the phone; Gmail, Calendar and Spotify; 1,400+ automated tests',
       ],
-      status: 'In active development',
+      status: 'Agent centre in active development · desktop avatar redesign paused',
       demo: 'The character and its states were generated with the real M.E.I.D.O code (isla_personaje.py). Voice and the LLM don’t run in the browser: the sequence is simulated here.',
     },
     'meido-movil': {
@@ -214,7 +214,7 @@ const projectText = pick({
         'Centro de agentes: encarga, sigue y aprueba sesiones de Claude Code, Codex y OpenCode, con terminales integradas y worktrees de git aislados',
         'Interfaz nueva con Tauri + React y un mundo de vóxeles para el avatar; memoria compartida con el móvil; Gmail, Calendar y Spotify; 1,400+ pruebas automatizadas',
       ],
-      status: 'En desarrollo activo',
+      status: 'Centro de agentes en desarrollo · rediseño del avatar de escritorio en pausa',
       demo: 'El personaje y sus estados se generaron con el código real de M.E.I.D.O (isla_personaje.py). La voz y el LLM no corren en el navegador: aquí se simula la secuencia.',
     },
     'meido-movil': {
