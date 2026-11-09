@@ -28,7 +28,7 @@ npm run build    # genera dist/
 
 ## Proyectos del portafolio
 
-Las descripciones bilingües viven en `src/content.js`; el `README.md` del repositorio ofrece un resumen en inglés. El portafolio presenta M.E.I.D.O (escritorio), Meido Móvil, Mitpad, RigM, Autum y CosechIA. Sus demos del navegador son simulaciones o muestras interactivas, no conexiones a los servicios de cada proyecto. La muestra de Mitpad conserva el prototipo inicial de notas para escritorio; el producto actual es el workspace web.
+Las descripciones bilingües viven en `src/content.js`; el `README.md` del repositorio ofrece un resumen en inglés. El portafolio presenta M.E.I.D.O (escritorio), Meido Móvil, Mitpad, MeshingUp, Autum y CosechIA. Sus demos del navegador son simulaciones o muestras interactivas, no conexiones a los servicios de cada proyecto. La demo de Mitpad simula el workbench web y sus llamadas MCP; la de MeshingUp, un brazo con IK.
 
 ## Notas
 - Datos de los proyectos verificados el 2026-11-09 contra cada repositorio (herramientas, pruebas, versiones). Repos públicos:
