@@ -1,0 +1,16 @@
+.mudemo { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); min-height: 100%; }
+.mu-stage { padding: 20px 24px; min-width: 0; }
+.mu-stage canvas { width: 100%; height: auto; max-height: 62vh; aspect-ratio: 4 / 5; display: block; background: #0d0d0d; border: 1px solid var(--line); touch-action: none; cursor: grab; }
+.mu-stage canvas:active { cursor: grabbing; }
+.mu-side { padding: 24px 26px; border-left: 1px solid var(--line); min-width: 0; }
+.mu-side .label { margin: 0 0 8px; }
+.mu-states { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 20px; }
+.mu-states button, .mu-toggle { background: none; border: 1px solid var(--line-2); color: var(--text-2); padding: 9px 10px; font: 400 12px var(--mono); cursor: pointer; text-align: left; }
+.mu-states button[aria-pressed='true'], .mu-toggle[aria-checked='true'] { color: var(--text); border-color: var(--text-2); background: var(--surface); }
+.mu-read { font: 400 12px/1.8 var(--mono); color: var(--text-2); border-top: 1px solid var(--line); margin-top: 20px; padding-top: 12px; }
+.mu-read output { color: var(--text); }
+@media (max-width: 760px) {
+  .mudemo { grid-template-columns: 1fr; }
+  .mu-side { border-left: 0; border-top: 1px solid var(--line); padding: 18px; }
+  .mu-stage { padding: 14px; }
+}

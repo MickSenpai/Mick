@@ -1,204 +1,113 @@
 import './mitpad.css';
 import { pick } from '../i18n.js';
 
-// Textos de la app real (en español); en la versión en inglés, traducidos
+// Simulación del workbench: tablero y llamadas MCP en memoria, con los nombres reales de las herramientas
 const T = pick({
   en: {
-    app: 'Mitpad (early desktop prototype)', nueva: '+ New Note', titulo: 'Note title (Optional)', tituloAria: 'Title',
-    contenido: 'Write your idea here. Meido will analyze it soon...', contenidoAria: 'Content',
-    guardar: 'Save Locally', actualizar: 'Update Locally', borrar: 'Delete',
-    capturada: 'Operation in <code>sync_queue</code> picked up by the Worker.',
-    detras: 'Behind the scenes', red: 'Network', conectada: 'Connected', sinRed: 'Offline',
-    local: 'Local SQLite · notes', nube: 'Convex · cloud', sinTitulo: 'Untitled', vacio: 'empty', colaVacia: 'empty queue',
-    obligatorio: 'The note content is required.',
-    actualizada: (id) => `✅ Note updated. UUID: ${id}`,
-    creada: (id) => `✅ New note created. UUID: ${id}`,
-    borrada: (id) => `🗑️ Note ${id} deleted locally and queued.`,
-    sinConexion: '❌ [Worker] No connection to the cloud: network unavailable',
-    iniciado: '🚀 [Worker] Offline-First engine started...',
+    board: 'Mitpad workspace (simulation)', cols: ['To do', 'In progress', 'Done'], hint: 'Click a card to advance its status.',
+    agent: 'Agent · MCP client', calls: 'Calls', activity: 'Activity', empty: 'empty', log: 'Request and response',
+    run: { list: 'List projects', create: 'Create task', update: 'Update a task', note: 'Create note' },
+    newTask: ['Review the sync queue', 'Write the MCP onboarding', 'Check the 3D map hover', 'Rotate an agent key'],
+    noTasks: 'There are no open tasks to update.',
+    byAgent: 'agent', byYou: 'you', moved: (t, s) => `${t} → ${s}`, created: (t) => `created «${t}»`, noted: 'note created',
+    noteTitle: 'Meeting notes', ready: 'Agent connected. Pick a tool to call it.',
   },
   es: {
-    app: 'Mitpad (prototipo inicial de escritorio)', nueva: '+ Nueva Nota', titulo: 'Título de la nota (Opcional)', tituloAria: 'Título',
-    contenido: 'Escribe tu idea aquí. Meido la analizará pronto...', contenidoAria: 'Contenido',
-    guardar: 'Guardar Localmente', actualizar: 'Actualizar Localmente', borrar: 'Borrar',
-    capturada: 'Operación en <code>sync_queue</code> capturada por el Worker.',
-    detras: 'Detrás de escena', red: 'Red', conectada: 'Conectada', sinRed: 'Sin red',
-    local: 'SQLite local · notas', nube: 'Convex · nube', sinTitulo: 'Sin título', vacio: 'vacío', colaVacia: 'cola vacía',
-    obligatorio: 'El contenido de la nota es obligatorio.',
-    actualizada: (id) => `✅ Nota actualizada. UUID: ${id}`,
-    creada: (id) => `✅ Nueva nota creada. UUID: ${id}`,
-    borrada: (id) => `🗑️ Nota ${id} borrada localmente y encolada.`,
-    sinConexion: '❌ [Worker] Sin conexión con la nube: red no disponible',
-    iniciado: '🚀 [Worker] Motor Offline-First iniciado...',
+    board: 'Workspace de Mitpad (simulación)', cols: ['Por hacer', 'En curso', 'Hecho'], hint: 'Haz clic en una tarjeta para avanzar su estado.',
+    agent: 'Agente · cliente MCP', calls: 'Llamadas', activity: 'Actividad', empty: 'vacío', log: 'Petición y respuesta',
+    run: { list: 'Listar proyectos', create: 'Crear tarea', update: 'Actualizar una tarea', note: 'Crear nota' },
+    newTask: ['Revisar la cola de sync', 'Escribir el onboarding de MCP', 'Revisar el hover del mapa 3D', 'Rotar la clave de un agente'],
+    noTasks: 'No hay tareas abiertas que actualizar.',
+    byAgent: 'agente', byYou: 'tú', moved: (t, s) => `${t} → ${s}`, created: (t) => `creó «${t}»`, noted: 'nota creada',
+    noteTitle: 'Notas de reunión', ready: 'Agente conectado. Elige una herramienta para llamarla.',
   },
 });
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
-const uuid = () => (crypto.randomUUID ? crypto.randomUUID() : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-  const r = (Math.random() * 16) | 0;
-  return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
-}));
-const corto = (id) => id.slice(0, 8);
-const TICK_MS = 2000;
 
 export function mount(root) {
+  const projects = [{ id: 'p1', name: 'Meido' }, { id: 'p2', name: 'CosechIA' }, { id: 'p3', name: 'MeshingUp' }];
+  let seq = 3;
+  const tasks = [
+    { id: 't1', title: pick({ en: 'Add agent removal', es: 'Añadir baja de agentes' }), status: 2 },
+    { id: 't2', title: pick({ en: 'Warm palette for the map', es: 'Paleta cálida para el mapa' }), status: 1 },
+    { id: 't3', title: pick({ en: 'Keep the MCP server awake', es: 'Mantener despierto el servidor MCP' }), status: 0 },
+  ];
+  const notes = [];
+  const activity = [];
+  let nextTitle = 0;
+
   root.innerHTML = `
     <div class="mpdemo">
-      <section class="mp-app" aria-label="${T.app}">
-        <div class="mp-header">
-          <h3>Mitpad <span>${pick({ en: 'Early prototype', es: 'Prototipo inicial' })}</span></h3>
-          <button class="mp-new" type="button">${T.nueva}</button>
-        </div>
-        <div class="mp-editor">
-          <div class="mp-error" hidden></div>
-          <input type="text" placeholder="${T.titulo}" aria-label="${T.tituloAria}">
-          <textarea placeholder="${T.contenido}" aria-label="${T.contenidoAria}"></textarea>
-          <div class="mp-actions">
-            <button class="mp-save" type="button">${T.guardar}</button>
-            <button class="mp-delete" type="button" hidden>${T.borrar}</button>
-          </div>
-        </div>
-        <div class="mp-success" hidden><p><strong></strong></p><p>${T.capturada}</p></div>
+      <section class="mp-app" aria-label="${T.board}">
+        <h3>Mitpad <span>${T.board}</span></h3>
+        <p class="mp-hint">${T.hint}</p>
+        <div class="mp-board">${T.cols.map((c, i) => `<div class="mp-col" data-col="${i}"><p class="label">${c}</p><ul></ul></div>`).join('')}</div>
+        <p class="label">${T.activity}</p>
+        <ul class="mp-activity" aria-live="polite"></ul>
       </section>
-
-      <section class="mp-back" aria-label="${T.detras}">
-        <div class="mp-net">
-          <span class="label">${T.red}</span>
-          <button class="mp-toggle" type="button" role="switch" aria-checked="true"><span></span>${T.conectada}</button>
+      <section class="mp-back" aria-label="${T.agent}">
+        <p class="label">${T.agent}</p>
+        <div class="mp-tools">
+          <button type="button" data-run="list">mitpad_projects_list</button>
+          <button type="button" data-run="create">mitpad_tasks_create</button>
+          <button type="button" data-run="update">mitpad_tasks_update</button>
+          <button type="button" data-run="note">mitpad_notes_create</button>
         </div>
-        <div class="mp-cols">
-          <div><p class="label">${T.local}</p><ul class="mp-local"></ul></div>
-          <div><p class="label">${T.nube}</p><ul class="mp-cloud"></ul></div>
-        </div>
-        <p class="label">sync_queue</p>
-        <table class="mp-queue"><thead><tr><th>#</th><th>operation</th><th>note</th></tr></thead><tbody></tbody></table>
-        <p class="label">Worker</p>
+        <p class="label">${T.log}</p>
         <pre class="mp-log" aria-live="polite"></pre>
       </section>
     </div>`;
-
   const $ = (s) => root.querySelector(s);
-  const title = $('.mp-app input');
-  const content = $('.mp-app textarea');
-  const errEl = $('.mp-error');
-  const ok = $('.mp-success');
-  const saveBtn = $('.mp-save');
-  const delBtn = $('.mp-delete');
-  const toggle = $('.mp-toggle');
-
-  const local = new Map(); // id -> {title, content}
-  const cloud = new Map();
-  const queue = []; // {qid, operation, payload}
-  let qid = 0;
-  let online = true;
-  let activeNote = null;
-  const logLines = [];
-
-  function log(line) {
-    logLines.push(line);
-    if (logLines.length > 40) logLines.shift();
-    const el = $('.mp-log');
-    el.textContent = logLines.join('\n');
-    el.scrollTop = el.scrollHeight;
-  }
+  const logEl = $('.mp-log');
+  logEl.textContent = T.ready;
 
   function render() {
-    $('.mp-local').innerHTML = [...local].map(([id, n]) => `<li class="${activeNote?.id === id ? 'on' : ''}" data-id="${id}"><b>${esc(n.title || T.sinTitulo)}</b><small>${corto(id)}</small></li>`).join('') || `<li class="empty">${T.vacio}</li>`;
-    $('.mp-cloud').innerHTML = [...cloud].map(([id, n]) => `<li><b>${esc(n.title || T.sinTitulo)}</b><small>${corto(id)}</small></li>`).join('') || `<li class="empty">${T.vacio}</li>`;
-    $('.mp-queue tbody').innerHTML = queue.map((q) => `<tr><td>${q.qid}</td><td>${q.operation}</td><td>${corto(q.payload.id)}</td></tr>`).join('') || `<tr><td colspan="3" class="empty">${T.colaVacia}</td></tr>`;
-    saveBtn.textContent = activeNote ? T.actualizar : T.guardar;
-    delBtn.hidden = !activeNote;
+    root.querySelectorAll('.mp-col').forEach((col) => {
+      const i = Number(col.dataset.col);
+      const items = tasks.filter((t) => t.status === i);
+      col.querySelector('ul').innerHTML = items.map((t) => `<li><button type="button" class="mp-card" data-id="${t.id}" ${i === 2 ? 'disabled' : ''}>${esc(t.title)}</button></li>`).join('') || `<li class="empty">${T.empty}</li>`;
+    });
+    $('.mp-activity').innerHTML = activity.slice(-4).reverse().map((a) => `<li><b>${a.who}</b> ${esc(a.text)}</li>`).join('') || `<li class="empty">${T.empty}</li>`;
   }
+  const add = (who, text) => { activity.push({ who, text }); };
+  const show = (call, res) => { logEl.textContent = `→ ${call}\n← ${JSON.stringify(res, null, 1)}`; };
 
-  function encolar(operation, payload) {
-    queue.push({ qid: ++qid, operation, payload });
-  }
-  function mostrar(msg) {
-    errEl.hidden = true;
-    ok.hidden = false;
-    ok.querySelector('strong').textContent = msg;
-  }
-
-  saveBtn.addEventListener('click', () => {
-    errEl.hidden = true;
-    ok.hidden = true;
-    if (!content.value.trim()) {
-      errEl.textContent = T.obligatorio;
-      errEl.hidden = false;
-      return;
-    }
-    if (activeNote) {
-      local.set(activeNote.id, { title: title.value, content: content.value });
-      encolar('UPDATE', { id: activeNote.id, title: title.value, content: content.value });
-      mostrar(T.actualizada(activeNote.id));
-    } else {
-      const id = uuid();
-      activeNote = { id };
-      local.set(id, { title: title.value, content: content.value });
-      encolar('INSERT', { id, title: title.value, content: content.value });
-      mostrar(T.creada(id));
-    }
-    render();
+  $('.mp-board').addEventListener('click', (e) => {
+    const b = e.target.closest('.mp-card');
+    if (!b) return;
+    const t = tasks.find((x) => x.id === b.dataset.id);
+    if (t && t.status < 2) { t.status++; add(T.byYou, T.moved(t.title, T.cols[t.status])); render(); }
   });
 
-  delBtn.addEventListener('click', () => {
-    if (!activeNote) return;
-    const id = activeNote.id;
-    local.delete(id);
-    encolar('DELETE', { id });
-    mostrar(T.borrada(id));
-    activeNote = null;
-    title.value = '';
-    content.value = '';
+  const actions = {
+    list: () => { show('mitpad_projects_list()', projects.map((p) => ({ id: p.id, name: p.name, status: 'active' }))); },
+    create: () => {
+      const title = T.newTask[nextTitle++ % T.newTask.length];
+      const t = { id: `t${++seq}`, title, status: 0 };
+      tasks.push(t);
+      add(T.byAgent, T.created(title));
+      show(`mitpad_tasks_create({ title: "${title}" })`, { id: t.id, status: 'todo' });
+    },
+    update: () => {
+      const t = tasks.find((x) => x.status < 2);
+      if (!t) { logEl.textContent = T.noTasks; return; }
+      t.status++;
+      add(T.byAgent, T.moved(t.title, T.cols[t.status]));
+      show(`mitpad_tasks_update({ id: "${t.id}", status: "${['todo', 'doing', 'done'][t.status]}" })`, { id: t.id, ok: true });
+    },
+    note: () => {
+      notes.push({ title: T.noteTitle });
+      add(T.byAgent, T.noted);
+      show(`mitpad_notes_create({ title: "${T.noteTitle}" })`, { id: `n${notes.length}`, ok: true });
+    },
+  };
+  $('.mp-tools').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-run]');
+    if (!b) return;
+    actions[b.dataset.run]();
     render();
   });
-
-  $('.mp-new').addEventListener('click', () => {
-    activeNote = null;
-    title.value = '';
-    content.value = '';
-    ok.hidden = true;
-    errEl.hidden = true;
-    render();
-  });
-
-  // abrir una nota local para editarla
-  $('.mp-local').addEventListener('click', (e) => {
-    const li = e.target.closest('[data-id]');
-    if (!li) return;
-    const n = local.get(li.dataset.id);
-    activeNote = { id: li.dataset.id };
-    title.value = n.title;
-    content.value = n.content;
-    render();
-  });
-
-  toggle.addEventListener('click', () => {
-    online = !online;
-    toggle.setAttribute('aria-checked', String(online));
-    toggle.lastChild.textContent = online ? T.conectada : T.sinRed;
-  });
-
-  // Worker: cada operación se borra de la cola solo cuando la nube la confirma
-  function tick() {
-    if (!queue.length) return;
-    if (!online) {
-      log(T.sinConexion);
-      return;
-    }
-    while (queue.length) {
-      const { operation, payload } = queue[0];
-      if (operation === 'INSERT' && !cloud.has(payload.id)) cloud.set(payload.id, { title: payload.title, content: payload.content });
-      if (operation === 'UPDATE' && cloud.has(payload.id)) cloud.set(payload.id, { title: payload.title, content: payload.content });
-      if (operation === 'DELETE') cloud.delete(payload.id);
-      log(`✅ [Worker] ${operation} OK: "${payload.id}"`);
-      queue.shift();
-    }
-    render();
-  }
-
-  log(T.iniciado);
   render();
-  const timer = setInterval(tick, TICK_MS);
-  return () => clearInterval(timer);
+  return () => {};
 }

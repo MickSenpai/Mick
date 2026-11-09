@@ -192,6 +192,12 @@ export function createCube(scene, { reduced = false } = {}) {
   }
 
   // ---------- formas ----------
+  // Silueta humanoide (27 piezas): cabeza, hombros, brazos, torso, piernas y pies
+  const FIGURE = [
+    [0, 4], [-2, 3], [-1, 3], [0, 3], [1, 3], [2, 3], [-2, 2], [2, 2], [-2, 1], [2, 1],
+    [-1, 2], [0, 2], [1, 2], [-1, 1], [0, 1], [1, 1], [0, 0], [-1, 0], [1, 0],
+    [-1, -1], [1, -1], [-1, -2], [1, -2], [-1, -3], [1, -3], [-2, -3], [2, -3],
+  ];
   const qTmp = new THREE.Quaternion();
   function formationTarget(name, p, now, t, pos, quat) {
     const i = p.idx;
@@ -236,6 +242,12 @@ export function createCube(scene, { reduced = false } = {}) {
         const r = i % 3;
         const k = Math.floor(i / 3);
         pos.set((r - 1) * 1.8, 0, (4 - k) * 1.15);
+        quat.identity();
+        return;
+      }
+      case 'figure': {
+        const [fx, fy] = FIGURE[i % FIGURE.length];
+        pos.set(fx * 1.04, (fy - 0.5) * 1.04, 0);
         quat.identity();
         return;
       }
