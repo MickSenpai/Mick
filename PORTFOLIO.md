@@ -23,9 +23,12 @@ npm run build    # genera dist/
 | `src/chat/` | Chat con la Meido pública: `chat.js` (el chat), `burbuja.js` (botón y panel del portafolio), `pagina.js` (página propia) |
 | `meido/index.html` | Página propia del chat: `/Mick/meido/` (`?de=linkedin`, `?de=cv`… para saber de dónde llegan) |
 | `convex/` | Backend de la Meido pública (otro proyecto de Convex, aparte de la nube privada de M.E.I.D.O) |
+| `src/demos/` | Una demo por proyecto (`meido`, `meido-movil`, `mitpad`, `meshingup`, `autum`, `cosechia`); se cargan solo al abrirlas |
 | `public/cv/` · `public/logos/` | CV descargable (`Omar_Reyes_Resume.pdf` en inglés, `Omar_Reyes_CV.pdf` en español) y logo de Autum |
 
 ## Notas
+- Datos de los proyectos verificados el 2026-11-09 contra cada repositorio (herramientas, pruebas, versiones). Repos públicos:
+  Mitpad, MeshingUp y Autum; privados (sin enlace): M.E.I.D.O, Meido Móvil y CosechIA. Al publicar uno, pon su URL en `repo` dentro de `projectBase`.
 - El cubo solo gira capas que no tocan la esquina de Meido, así su hueco siempre es la esquina frontal.
   Al llegar a Contacto se resuelve deshaciendo exactamente los giros hechos.
 - Para cambiar una frase de Meido o un proyecto, edita solo `src/content.js` (las dos versiones, `en` y `es`).

@@ -28,8 +28,10 @@ I like taking ambitious ideas and making them practical: software that feels cap
 
 | Project | What it is | Built with |
 | --- | --- | --- |
-| [M.E.I.D.O.](https://github.com/MickSenpai/M.E.I.D.O) | A personal assistant exploring continuous speech, semantic memory, and natural voice interaction. | Python, PyQt6, PostgreSQL |
-| [Mitpad](https://github.com/MickSenpai/Mitpad) | An offline-first notes app for keeping ideas close and syncing them across devices. | Tauri, Rust, TypeScript, SQLite |
+| M.E.I.D.O. *(private)* | A personal desktop assistant with continuous speech, semantic memory and a control centre for coding agents (Claude Code, Codex, OpenCode). | Python, PyQt6, Tauri, React, Convex |
+| [Mitpad](https://github.com/MickSenpai/Mitpad) | A web workspace where projects, tasks, notes and AI agents meet through a remote MCP server and a 3D map. | SvelteKit, TypeScript, Convex, MCP |
+| [MeshingUp](https://github.com/MickSenpai/MeshingUp) | A desktop editor and CLI that rigs 2D illustrations and GLB/VRM avatars for reactive animation. | Python, PyQt6, Three.js, Blender |
+| [AI-Virtual-Mouse](https://github.com/MickSenpai/AI-Virtual-Mouse) | A virtual mouse driven by real-time hand gestures. | Python, OpenCV, MediaPipe |
 | [dsh-studio](https://github.com/Moresyl/dsh-studio) | A native desktop app for working with DeepSeek Harness. | Rust, Tauri |
 | [cchub](https://github.com/Moresyl/cchub) | A desktop hub for Claude Code MCP servers, profiles, and workflows. | Rust |
 | [metaclean](https://github.com/Moresyl/metaclean) | Tools for inspecting and cleaning metadata from everyday files. | TypeScript, Rust |

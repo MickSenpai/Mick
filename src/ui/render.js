@@ -117,7 +117,7 @@ function projectCh(p, n) {
 }
 
 function stackCh() {
-  return chapter(9, `
+  return chapter(chapters.findIndex((c) => c.id === 'stack'), `
     <p class="eyebrow">${esc(ui.stack.eyebrow)}</p>
     <h2 id="stack-title" class="title">${esc(ui.stack.title)}</h2>
     <div class="stack">
@@ -126,7 +126,7 @@ function stackCh() {
 }
 
 function contactCh() {
-  return chapter(10, `
+  return chapter(chapters.length - 1, `
     <p class="eyebrow">${esc(ui.contact.eyebrow)}</p>
     <h2 id="contacto-title" class="title display-sm">${ui.contact.title}</h2>
     <ul class="contact">

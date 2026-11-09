@@ -5,6 +5,7 @@ const loaders = {
   meido: () => import('../demos/meido.js'),
   'meido-movil': () => import('../demos/meido-movil.js'),
   mitpad: () => import('../demos/mitpad.js'),
+  meshingup: () => import('../demos/meshingup.js'),
   autum: () => import('../demos/autum.js'),
   cosechia: () => import('../demos/cosechia.js'),
 };
